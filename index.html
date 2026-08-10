@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Food Manía</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: 'Arial Black', Gadget, sans-serif;
+    }
+
+    /* Contenedor principal ajustado a la TV */
+    .menu-container {
+      position: relative;
+      width: 100vw;
+      height: 56.25vw;
+      max-height: 100vh;
+      max-width: 177.78vh;
+      overflow: hidden;
+    }
+
+    /* Video de fondo en bucle */
+    .video-fondo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 1;
+    }
+
+    /* Estilo base de los precios */
+    .precio {
+      position: absolute;
+      font-size: 2vw;
+      font-weight: 900;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      z-index: 2; /* Por encima del video */
+    }
+
+    /* Tus coordenadas personalizadas (Mantén las que te funcionaron) */
+    .precio-perro { color: #ffffff; }
+    #perro_sencillo        { top: 21.0%; left: 33.5%; }
+    #combo_5_perros        { top: 39.0%; left: 33.5%; }
+    #combo_10_perros       { top: 55.5%; left: 33.5%; }
+    #perro_especial        { top: 69.5%; left: 33.5%; }
+
+    .precio-hamburguesa { color: #9c0226; }
+    #criolla               { top: 21.0%; left: 78.0%; }
+    #americana             { top: 32.5%; left: 72.0%; }
+    #americana_bacon       { top: 47.0%; left: 70.0%; }
+    #americana_bacon_doble { top: 61.0%; left: 66.0%; }
+    #callejera             { top: 74.0%; left: 76.0%; }
+
+    /* --- BANNER INFERIOR EN MOVIMIENTO --- */
+    .banner-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(156, 2, 38, 0.9); /* Rojo guinda con ligera transparencia */
+      color: #ffffff;
+      padding: 0.5vw 0;
+      font-size: 1.4vw;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 3; /* En la capa superior */
+      border-top: 2px solid #ffcc00; /* Borde superior amarillo/dorado */
+    }
+
+    .banner-texto {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marq 25s linear infinite; /* Tiempo que tarda en cruzar la pantalla */
+    }
+
+    @keyframes marq {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-container">
+    <!-- Video de fondo -->
+    <video class="video-fondo" autoplay loop muted playsinline>
+      <source src="fondo.mp4" type="video/mp4">
+    </video>
+
+    <!-- Precios Perros -->
+    <div id="perro_sencillo" class="precio precio-perro"></div>
+    <div id="combo_5_perros" class="precio precio-perro"></div>
+    <div id="combo_10_perros" class="precio precio-perro"></div>
+    <div id="perro_especial" class="precio precio-perro"></div>
+
+    <!-- Precios Hamburguesas -->
+    <div id="criolla" class="precio precio-hamburguesa"></div>
+    <div id="americana" class="precio precio-hamburguesa"></div>
+    <div id="americana_bacon" class="precio precio-hamburguesa"></div>
+    <div id="americana_bacon_doble" class="precio precio-hamburguesa"></div>
+    <div id="callejera" class="precio precio-hamburguesa"></div>
+
+    <!-- Banner en movimiento -->
+    <div class="banner-container">
+      <div class="banner-texto">
+        🔥 ¡Aceptamos Pago Móvil, Zelle y Efectivo! • Pregunta por nuestras promociones del día • Delivery disponible en toda la ciudad 🔥
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbwZKhKm9VunjgA5kJ3XLS_JIKDLi2aEqcFvwnS8D3pgqAx0FgmhCqAaBQ1LM5FOJn7M/exec";
+
+    async function actualizarPrecios() {
+      try {
+        const res = await fetch(API_URL);
+        const datos = await res.json();
+
+        datos.forEach(item => {
+          const elemento = document.getElementById(item.id);
+          if (elemento) {
+            if (elemento.innerText !== item.precio) {
+              elemento.innerText = item.precio;
+            }
+          }
+        });
+      } catch (err) {
+        console.error("Error al actualizar precios:", err);
+      }
+    }
+
+    actualizarPrecios();
+    setInterval(actualizarPrecios, 20000);
+  </script>
+</body>
+</html>
