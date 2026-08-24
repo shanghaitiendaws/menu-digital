@@ -63,15 +63,15 @@
     }
 
     /* JAMONES */
-    #p_jamon_1 { top: 22.0%; left: 55.0%; }
-    #p_jamon_2 { top: 25.4%; left: 55.0%; }
-    #p_jamon_3 { top: 28.8%; left: 55.0%; }
-    #p_jamon_4 { top: 32.2%; left: 55.0%; }
-    #p_jamon_5 { top: 35.6%; left: 55.0%; }
-    #p_jamon_6 { top: 39.0%; left: 55.0%; }
-    #p_jamon_7 { top: 42.4%; left: 55.0%; }
-    #p_jamon_8 { top: 45.8%; left: 55.0%; }
-    #p_jamon_9 { top: 49.2%; left: 55.0%; }
+    #p_jamon_1 { top: 22.0%; left: 56.0%; }
+    #p_jamon_2 { top: 25.4%; left: 56.0%; }
+    #p_jamon_3 { top: 28.8%; left: 56.0%; }
+    #p_jamon_4 { top: 32.2%; left: 56.0%; }
+    #p_jamon_5 { top: 35.6%; left: 56.0%; }
+    #p_jamon_6 { top: 39.0%; left: 56.0%; }
+    #p_jamon_7 { top: 42.4%; left: 56.0%; }
+    #p_jamon_8 { top: 45.8%; left: 56.0%; }
+    #p_jamon_9 { top: 49.2%; left: 56.0%; }
 
     /* PECHUGAS */
     #p_pechuga_1 { top: 21.0%; left: 91.5%; }
@@ -92,7 +92,7 @@
       position: absolute;
       bottom: 0px;
       left: 0px;
-      width: 32vw;     
+      width: 25vw;     
       height: 3.5vh;     
       overflow: hidden;
       display: flex;
@@ -104,10 +104,10 @@
       display: inline-block;
       white-space: nowrap;
       font-family: 'Lato', sans-serif;
-      font-size: 0.85vw;
+      font-size: 1vw;
       font-weight: 900;
       color: #FFFFFF;
-      animation: moverMarquesina 14s linear infinite;
+      animation: moverMarquesina 8s linear infinite;
     }
 
     .marquesina-texto span {
@@ -172,71 +172,67 @@
 
     const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE';
 
-    function obtenerJSON(url) {
-      return fetch(url)
-        .then(res => res.text())
-        .then(texto => {
-          // Extrae el JSON puro devolviendo el contenido exacto de Google Viz
-          const inicio = texto.indexOf('{');
-          const fin = texto.lastIndexOf('}') + 1;
-          return JSON.parse(texto.substring(inicio, fin));
-        });
+    // Función callback global para procesar Precios (Hoja2)
+    window.procesarPrecios = function(data) {
+      if (!data || !data.table || !data.table.rows) return;
+      const rows = data.table.rows;
+
+      // Jamones (filas 3 a 11 en Excel -> índices 2 a 10)
+      for (let i = 0; i < 9; i++) {
+        let v = rows[i + 2]?.c[3]?.v;
+        if (v !== undefined && v !== null) {
+          document.getElementById(`p_jamon_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+        }
+      }
+
+      // Pechugas (filas 13 a 17 en Excel -> índices 12 a 16)
+      for (let i = 0; i < 5; i++) {
+        let v = rows[i + 12]?.c[3]?.v;
+        if (v !== undefined && v !== null) {
+          document.getElementById(`p_pechuga_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+        }
+      }
+
+      // Mortadelas (filas 24 a 28 en Excel -> índices 23 a 27)
+      for (let i = 0; i < 5; i++) {
+        let v = rows[i + 23]?.c[3]?.v;
+        if (v !== undefined && v !== null) {
+          document.getElementById(`p_mortadela_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+        }
+      }
+    };
+
+    // Función callback global para procesar Tasas (Hoja3)
+    window.procesarTasas = function(data) {
+      if (!data || !data.table || !data.table.rows) return;
+      const rows = data.table.rows;
+
+      let usd = rows[1]?.c[1]?.v || rows[0]?.c[1]?.v;
+      let eur = rows[4]?.c[1]?.v || rows[3]?.c[1]?.v;
+
+      if (usd !== undefined && usd !== null) {
+        document.getElementById('tasa-usd').innerText = `Bs. ${typeof usd === 'number' ? usd.toFixed(2) : usd}`;
+      }
+      if (eur !== undefined && eur !== null) {
+        document.getElementById('tasa-eur').innerText = `Bs. ${typeof eur === 'number' ? eur.toFixed(2) : eur}`;
+      }
+    };
+
+    function pedirDatos() {
+      // Script dinámico para Precios (Hoja2)
+      const scriptPrecios = document.createElement('script');
+      scriptPrecios.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja2&tqx=responseHandler:procesarPrecios`;
+      document.body.appendChild(scriptPrecios);
+
+      // Script dinámico para Tasas (Hoja3)
+      const scriptTasas = document.createElement('script');
+      scriptTasas.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja3&tqx=responseHandler:procesarTasas`;
+      document.body.appendChild(scriptTasas);
     }
 
-    function cargarPrecios() {
-      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja2`;
-      obtenerJSON(url).then(data => {
-        const rows = data.table.rows;
-
-        // Jamones
-        for (let i = 0; i < 9; i++) {
-          let v = rows[i + 2]?.c[3]?.v;
-          if (v !== undefined && v !== null) {
-            document.getElementById(`p_jamon_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-          }
-        }
-
-        // Pechugas
-        for (let i = 0; i < 5; i++) {
-          let v = rows[i + 12]?.c[3]?.v;
-          if (v !== undefined && v !== null) {
-            document.getElementById(`p_pechuga_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-          }
-        }
-
-        // Mortadelas
-        for (let i = 0; i < 5; i++) {
-          let v = rows[i + 23]?.c[3]?.v;
-          if (v !== undefined && v !== null) {
-            document.getElementById(`p_mortadela_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-          }
-        }
-      }).catch(err => console.log("Error precios:", err));
-    }
-
-    function cargarTasas() {
-      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja3`;
-      obtenerJSON(url).then(data => {
-        const rows = data.table.rows;
-
-        // Dólar (Fila 2 -> B2)
-        let usd = rows[1]?.c[1]?.v || rows[0]?.c[1]?.v;
-        // Euro (Fila 5 -> B5)
-        let eur = rows[4]?.c[1]?.v || rows[3]?.c[1]?.v;
-
-        if (usd !== undefined) {
-          document.getElementById('tasa-usd').innerText = `Bs. ${typeof usd === 'number' ? usd.toFixed(2) : usd}`;
-        }
-        if (eur !== undefined) {
-          document.getElementById('tasa-eur').innerText = `Bs. ${typeof eur === 'number' ? eur.toFixed(2) : eur}`;
-        }
-      }).catch(err => console.log("Error tasas:", err));
-    }
-
-    cargarPrecios();
-    cargarTasas();
-    setInterval(cargarPrecios, 30000);
-    setInterval(cargarTasas, 30000);
+    // Ejecutar al cargar y cada 30 segundos
+    pedirDatos();
+    setInterval(pedirDatos, 30000);
   </script>
 </body>
 </html>
