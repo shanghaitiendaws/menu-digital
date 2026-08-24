@@ -87,37 +87,46 @@
     #p_mortadela_4 { top: 62.2%; left: 91.5%; }
     #p_mortadela_5 { top: 65.6%; left: 91.5%; }
 
-    /* MARQUESINA */
     .marquesina-contenedor {
-      position: absolute;
-      bottom: 2px;
-      left: 0px;
-      width: 28vw;     
-      height: 3vh;     
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      z-index: 10;
-    }
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 32vw;     
+  height: 3.5vh;     
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
 
-    .marquesina-texto {
-      display: inline-block;
-      white-space: nowrap;
-      font-family: 'Lato', sans-serif;
-      font-size: 1.8vw;
-      font-weight: 900;
-      color: #FFFFFF;
-      animation: moverMarquesina 30s linear infinite;
-    }
+.marquesina-contenido {
+  display: flex;
+  white-space: nowrap;
+  animation: rodarMarquesina 12s linear infinite;
+}
 
-    .marquesina-texto span {
-      color: #FFC107;
-    }
+.marquesina-bloque {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85vw;
+  font-weight: 900;
+  color: #FFFFFF;
+}
 
-    @keyframes moverMarquesina {
-      0%   { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
+.marquesina-bloque span {
+  color: #FFC107;
+}
+
+/* Animación continua perfecta sin espacios vacíos */
+@keyframes rodarMarquesina {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
   </style>
 </head>
 <body>
@@ -153,14 +162,17 @@
       <div id="p_mortadela_4" class="precio">--.--</div>
       <div id="p_mortadela_5" class="precio">--.--</div>
 
-      <!-- Marquesina -->
-      <div class="marquesina-contenedor">
-        <div class="marquesina-texto">
-          TASA BCV DEL DÍA: <span id="tasa-usd">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; EURO: <span id="tasa-eur">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI
-        </div>
-      </div>
+      <!-- Marquesina Tasa BCV y EURO -->
+<div class="marquesina-contenedor">
+  <div class="marquesina-contenido">
+    <div class="marquesina-bloque">
+      TASA BCV DEL DÍA: <span id="tasa-usd">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; EURO: <span id="tasa-eur">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI &nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="marquesina-bloque">
+      TASA BCV DEL DÍA: <span id="tasa-usd-dup">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; EURO: <span id="tasa-eur-dup">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI &nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
     </div>
   </div>
+</div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
