@@ -2,150 +2,219 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú Food Manía</title>
+  <title>TV 1 - Charcutería</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body, html { 
+      width: 100vw; 
+      height: 100vh; 
+      overflow: hidden; 
+      font-family: 'Arial Black', sans-serif; 
+      color: #000; 
+      background-color: #000; 
     }
-
-    body {
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      overflow: hidden;
-      font-family: 'Arial Black', Gadget, sans-serif;
-    }
-
-    /* Contenedor principal ajustado a la TV */
-    .menu-container {
+    
+    /* Contenedor principal responsive manteniendo aspecto 16:9 de TVs HD/4K */
+    .contenedor-pantalla {
       position: relative;
       width: 100vw;
-      height: 56.25vw;
-      max-height: 100vh;
-      max-width: 177.78vh;
+      height: 100vh;
+      aspect-ratio: 16 / 9;
+      margin: 0 auto;
+    }
+
+    /* Video de fondo responsive */
+    #bg-video { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      object-fit: contain; 
+      z-index: 1; 
+    }
+
+    /* Capa superior para montos y marquesina */
+    .menu-overlay { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      z-index: 2; 
+      pointer-events: none; 
+    }
+
+    /* Estilo base de los precios con fuente en vw (relativa al ancho) */
+    .precio { 
+      position: absolute; 
+      font-size: 1.35vw; 
+      font-weight: bold; 
+      color: #000; 
+      text-align: right; 
+      width: 6.2%; 
+    }
+
+    /* --- POSICIONAMIENTO EN PORCENTAJES (TV 1) --- */
+
+    /* JAMONES (Columna Central) */
+    #p_jamon_1 { top: 14.07%; left: 55.72%; }
+    #p_jamon_2 { top: 17.40%; left: 55.72%; }
+    #p_jamon_3 { top: 20.74%; left: 55.72%; }
+    #p_jamon_4 { top: 24.07%; left: 55.72%; }
+    #p_jamon_5 { top: 27.40%; left: 55.72%; }
+    #p_jamon_6 { top: 30.74%; left: 55.72%; }
+    #p_jamon_7 { top: 34.07%; left: 55.72%; }
+    #p_jamon_8 { top: 37.40%; left: 55.72%; }
+    #p_jamon_9 { top: 40.74%; left: 55.72%; }
+
+    /* PECHUGAS (Columna Derecha Superior) */
+    #p_pechuga_1 { top: 12.96%; left: 89.58%; }
+    #p_pechuga_2 { top: 16.29%; left: 89.58%; }
+    #p_pechuga_3 { top: 19.62%; left: 89.58%; }
+    #p_pechuga_4 { top: 22.96%; left: 89.58%; }
+    #p_pechuga_5 { top: 26.29%; left: 89.58%; }
+
+    /* MORTADELAS (Columna Derecha Inferior) */
+    #p_mortadela_1 { top: 48.14%; left: 89.58%; }
+    #p_mortadela_2 { top: 51.48%; left: 89.58%; }
+    #p_mortadela_3 { top: 54.81%; left: 89.58%; }
+    #p_mortadela_4 { top: 58.14%; left: 89.58%; }
+    #p_mortadela_5 { top: 61.48%; left: 89.58%; }
+
+    /* --- MARQUESINA EN FRAGMA VINOTINTO --- */
+    .marquesina-contenedor {
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      width: 25%;      /* Ocupa exactamente el tramo vinotinto */
+      height: 5.5%;    /* Altura proporcional del tramo */
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      z-index: 10;
     }
 
-    /* Video de fondo en bucle */
-    .video-fondo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      z-index: 1;
-    }
-
-    /* Estilo base de los precios */
-    .precio {
-      position: absolute;
-      font-size: 2vw;
-      font-weight: 900;
-      text-align: center;
-      transform: translate(-50%, -50%);
-      z-index: 2; /* Por encima del video */
-    }
-
-    /* Tus coordenadas personalizadas (Mantén las que te funcionaron) */
-    .precio-perro { color: #ffffff; }
-    #perro_sencillo        { top: 21.0%; left: 33.5%; }
-    #combo_5_perros        { top: 39.0%; left: 33.5%; }
-    #combo_10_perros       { top: 55.5%; left: 33.5%; }
-    #perro_especial        { top: 69.5%; left: 33.5%; }
-
-    .precio-hamburguesa { color: #9c0226; }
-    #criolla               { top: 21.0%; left: 78.0%; }
-    #americana             { top: 32.5%; left: 72.0%; }
-    #americana_bacon       { top: 47.0%; left: 70.0%; }
-    #americana_bacon_doble { top: 61.0%; left: 66.0%; }
-    #callejera             { top: 74.0%; left: 76.0%; }
-
-    /* --- BANNER INFERIOR EN MOVIMIENTO --- */
-    .banner-container {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(156, 2, 38, 0.9); /* Rojo guinda con ligera transparencia */
-      color: #ffffff;
-      padding: 0.5vw 0;
-      font-size: 1.4vw;
-      white-space: nowrap;
-      overflow: hidden;
-      z-index: 3; /* En la capa superior */
-      border-top: 2px solid #ffcc00; /* Borde superior amarillo/dorado */
-    }
-
-    .banner-texto {
+    .marquesina-texto {
       display: inline-block;
-      padding-left: 100%;
-      animation: marq 25s linear infinite; /* Tiempo que tarda en cruzar la pantalla */
+      white-space: nowrap;
+      font-family: 'Arial', sans-serif;
+      font-size: 1.15vw;
+      font-weight: bold;
+      color: #FFFFFF;
+      animation: moverMarquesina 12s linear infinite;
     }
 
-    @keyframes marq {
-      0%   { transform: translate(0, 0); }
-      100% { transform: translate(-100%, 0); }
+    .marquesina-texto span {
+      color: #FFC107; /* Color amarillo/dorado para resaltar la tasa */
+    }
+
+    @keyframes moverMarquesina {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
   </style>
 </head>
 <body>
 
-  <div class="menu-container">
-    <!-- Video de fondo -->
-    <video class="video-fondo" autoplay loop muted playsinline>
-      <source src="fondo.mp4" type="video/mp4">
+  <div class="contenedor-pantalla">
+    <!-- Video de fondo en bucle -->
+    <video autoplay muted loop id="bg-video">
+      <source src="plantilla_charcuteria.mp4" type="video/mp4">
     </video>
 
-    <!-- Precios Perros -->
-    <div id="perro_sencillo" class="precio precio-perro"></div>
-    <div id="combo_5_perros" class="precio precio-perro"></div>
-    <div id="combo_10_perros" class="precio precio-perro"></div>
-    <div id="perro_especial" class="precio precio-perro"></div>
+    <!-- Precios y marquesina montados en capas -->
+    <div class="menu-overlay">
+      <!-- Jamones -->
+      <div id="p_jamon_1" class="precio">--.--</div>
+      <div id="p_jamon_2" class="precio">--.--</div>
+      <div id="p_jamon_3" class="precio">--.--</div>
+      <div id="p_jamon_4" class="precio">--.--</div>
+      <div id="p_jamon_5" class="precio">--.--</div>
+      <div id="p_jamon_6" class="precio">--.--</div>
+      <div id="p_jamon_7" class="precio">--.--</div>
+      <div id="p_jamon_8" class="precio">--.--</div>
+      <div id="p_jamon_9" class="precio">--.--</div>
 
-    <!-- Precios Hamburguesas -->
-    <div id="criolla" class="precio precio-hamburguesa"></div>
-    <div id="americana" class="precio precio-hamburguesa"></div>
-    <div id="americana_bacon" class="precio precio-hamburguesa"></div>
-    <div id="americana_bacon_doble" class="precio precio-hamburguesa"></div>
-    <div id="callejera" class="precio precio-hamburguesa"></div>
+      <!-- Pechugas -->
+      <div id="p_pechuga_1" class="precio">--.--</div>
+      <div id="p_pechuga_2" class="precio">--.--</div>
+      <div id="p_pechuga_3" class="precio">--.--</div>
+      <div id="p_pechuga_4" class="precio">--.--</div>
+      <div id="p_pechuga_5" class="precio">--.--</div>
 
-    <!-- Banner en movimiento -->
-    <div class="banner-container">
-      <div class="banner-texto">
-        🔥 ¡Aceptamos Pago Móvil, Zelle y Efectivo! • Pregunta por nuestras promociones del día • Delivery disponible en toda la ciudad 🔥
+      <!-- Mortadelas -->
+      <div id="p_mortadela_1" class="precio">--.--</div>
+      <div id="p_mortadela_2" class="precio">--.--</div>
+      <div id="p_mortadela_3" class="precio">--.--</div>
+      <div id="p_mortadela_4" class="precio">--.--</div>
+      <div id="p_mortadela_5" class="precio">--.--</div>
+
+      <!-- Marquesina Tasa BCV (Ubicada en el rectángulo vinotinto) -->
+      <div class="marquesina-contenedor">
+        <div class="marquesina-texto">
+          TASA BCV DEL DÍA: <span id="tasa-usd">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbwZKhKm9VunjgA5kJ3XLS_JIKDLi2aEqcFvwnS8D3pgqAx0FgmhCqAaBQ1LM5FOJn7M/exec";
+    const SHEET_ID = 'TU_ID_DE_GOOGLE_SHEETS_AQUI'; 
+    const URL_PRECIOS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja2`;
+    const URL_TASAS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja3`;
 
+    // Cargar Precios desde Hoja2
     async function actualizarPrecios() {
       try {
-        const res = await fetch(API_URL);
-        const datos = await res.json();
+        const res = await fetch(URL_PRECIOS);
+        const text = await res.text();
+        const json = JSON.parse(text.substr(47).slice(0, -2));
+        const rows = json.table.rows;
 
-        datos.forEach(item => {
-          const elemento = document.getElementById(item.id);
-          if (elemento) {
-            if (elemento.innerText !== item.precio) {
-              elemento.innerText = item.precio;
-            }
-          }
-        });
-      } catch (err) {
-        console.error("Error al actualizar precios:", err);
+        // Jamones (Celdas D3 a D11 -> Índice de fila 2 a 10)
+        for (let i = 0; i < 9; i++) {
+          let val = rows[i + 2]?.c[3]?.v || '--.--';
+          document.getElementById(`p_jamon_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+        }
+
+        // Pechugas (Celdas D13 a D17 -> Índice de fila 12 a 16)
+        for (let i = 0; i < 5; i++) {
+          let val = rows[i + 12]?.c[3]?.v || '--.--';
+          document.getElementById(`p_pechuga_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+        }
+
+        // Mortadelas (Celdas D24 a D28 -> Índice de fila 23 a 27)
+        for (let i = 0; i < 5; i++) {
+          let val = rows[i + 23]?.c[3]?.v || '--.--';
+          document.getElementById(`p_mortadela_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+        }
+      } catch (e) { 
+        console.error("Error al cargar precios:", e); 
       }
     }
 
+    // Cargar Tasa del Día desde Hoja3 (Celda B2 -> Fila índice 1, Columna índice 1)
+    async function actualizarTasa() {
+      try {
+        const res = await fetch(URL_TASAS);
+        const text = await res.text();
+        const json = JSON.parse(text.substr(47).slice(0, -2));
+        const rows = json.table.rows;
+
+        let tasaUSD = rows[1]?.c[1]?.v || '--.--';
+        document.getElementById('tasa-usd').innerText = `Bs. ${typeof tasaUSD === 'number' ? tasaUSD.toFixed(2) : tasaUSD}`;
+      } catch (e) { 
+        console.error("Error al cargar la tasa:", e); 
+      }
+    }
+
+    // Ejecución inicial y refresco automático cada 30 segundos
     actualizarPrecios();
-    setInterval(actualizarPrecios, 20000);
+    actualizarTasa();
+    setInterval(actualizarPrecios, 30000);
+    setInterval(actualizarTasa, 30000);
   </script>
 </body>
 </html>
