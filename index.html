@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>TV 1 - Charcutería Shanghai</title>
   
-  <!-- Carga de la fuente Lato de Google Fonts -->
+  <!-- Fuente Lato desde Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
       overflow: hidden; 
       background-color: #000; 
       font-family: 'Lato', sans-serif;
-      font-weight: 900;
+      font-weight: 900; 
     }
     
     .contenedor-pantalla {
@@ -52,51 +52,51 @@
       pointer-events: none; 
     }
 
-    /* ESTILO DE PRECIOS - COLOR ROJO #ac1a12 Y FUENTE LATO HEAVY */
+    /* ESTILO DE PRECIOS - ROJO #ac1a12 Y LATO HEAVY */
     .precio { 
       position: absolute; 
       font-family: 'Lato', sans-serif;
-      font-size: 1.35vw; 
+      font-size: 1.4vw; 
       font-weight: 900; 
       color: #ac1a12; 
       text-align: right; 
-      width: 6%; 
+      width: 5%; 
     }
 
-    /* --- POSICIONAMIENTO DE PRECIOS --- */
+    /* --- POSICIONES AJUSTADAS AL LADO DE CADA REF. --- */
 
     /* JAMONES */
-    #p_jamon_1 { top: 18.5%; left: 58.2%; }
-    #p_jamon_2 { top: 21.8%; left: 58.2%; }
-    #p_jamon_3 { top: 25.1%; left: 58.2%; }
-    #p_jamon_4 { top: 28.5%; left: 58.2%; }
-    #p_jamon_5 { top: 31.8%; left: 58.2%; }
-    #p_jamon_6 { top: 35.1%; left: 58.2%; }
-    #p_jamon_7 { top: 38.5%; left: 58.2%; }
-    #p_jamon_8 { top: 41.8%; left: 58.2%; }
-    #p_jamon_9 { top: 45.1%; left: 58.2%; }
+    #p_jamon_1 { top: 22.0%; left: 56.5%; }
+    #p_jamon_2 { top: 25.5%; left: 56.5%; }
+    #p_jamon_3 { top: 29.2%; left: 56.5%; }
+    #p_jamon_4 { top: 32.8%; left: 56.5%; }
+    #p_jamon_5 { top: 36.4%; left: 56.5%; }
+    #p_jamon_6 { top: 40.0%; left: 56.5%; }
+    #p_jamon_7 { top: 43.6%; left: 56.5%; }
+    #p_jamon_8 { top: 47.2%; left: 56.5%; }
+    #p_jamon_9 { top: 50.8%; left: 56.5%; }
 
     /* PECHUGAS */
-    #p_pechuga_1 { top: 17.5%; left: 91.0%; }
-    #p_pechuga_2 { top: 20.8%; left: 91.0%; }
-    #p_pechuga_3 { top: 24.1%; left: 91.0%; }
-    #p_pechuga_4 { top: 27.5%; left: 91.0%; }
-    #p_pechuga_5 { top: 30.8%; left: 91.0%; }
+    #p_pechuga_1 { top: 21.6%; left: 92.2%; }
+    #p_pechuga_2 { top: 25.2%; left: 92.2%; }
+    #p_pechuga_3 { top: 28.8%; left: 92.2%; }
+    #p_pechuga_4 { top: 32.4%; left: 92.2%; }
+    #p_pechuga_5 { top: 36.0%; left: 92.2%; }
 
     /* MORTADELAS */
-    #p_mortadela_1 { top: 51.5%; left: 91.0%; }
-    #p_mortadela_2 { top: 54.8%; left: 91.0%; }
-    #p_mortadela_3 { top: 58.1%; left: 91.0%; }
-    #p_mortadela_4 { top: 61.5%; left: 91.0%; }
-    #p_mortadela_5 { top: 64.8%; left: 91.0%; }
+    #p_mortadela_1 { top: 52.4%; left: 92.2%; }
+    #p_mortadela_2 { top: 56.0%; left: 92.2%; }
+    #p_mortadela_3 { top: 59.6%; left: 92.2%; }
+    #p_mortadela_4 { top: 63.2%; left: 92.2%; }
+    #p_mortadela_5 { top: 66.8%; left: 92.2%; }
 
-    /* --- MARQUESINA EN FR ANJA NEGRA/VINOTINTO --- */
+    /* --- MARQUESINA CENTRADA EN LA FRANJA NEGRA/ROJA --- */
     .marquesina-contenedor {
       position: absolute;
-      bottom: 0.2%;
-      left: 0.5%;
-      width: 29.5%;     
-      height: 4.2%;     
+      bottom: 0.1%;
+      left: 0.2%;
+      width: 29.8%;     
+      height: 3.8%;     
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -107,14 +107,14 @@
       display: inline-block;
       white-space: nowrap;
       font-family: 'Lato', sans-serif;
-      font-size: 0.95vw;
+      font-size: 0.9vw;
       font-weight: 900;
       color: #FFFFFF;
       animation: moverMarquesina 14s linear infinite;
     }
 
     .marquesina-texto span {
-      color: #FFC107; /* Amarillo para resaltar los montos */
+      color: #FFC107;
     }
 
     @keyframes moverMarquesina {
@@ -156,7 +156,7 @@
       <div id="p_mortadela_4" class="precio">--.--</div>
       <div id="p_mortadela_5" class="precio">--.--</div>
 
-      <!-- Marquesina con Dólar y Euro -->
+      <!-- Marquesina Tasa BCV y EURO -->
       <div class="marquesina-contenedor">
         <div class="marquesina-texto">
           TASA BCV DEL DÍA: <span id="tasa-usd">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; EURO: <span id="tasa-eur">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI
@@ -173,14 +173,13 @@
       }
     });
 
-    // Pega el ID de tu Google Sheets
+    // ID de tu Google Sheets
     const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE'; 
 
     const URL_PRECIOS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja2`;
     const URL_TASAS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja3`;
 
     async function actualizarPrecios() {
-      if (!SHEET_ID || SHEET_ID.includes('PEGA_AQUI')) return;
       try {
         const res = await fetch(URL_PRECIOS);
         const text = await res.text();
@@ -216,16 +215,15 @@
     }
 
     async function actualizarTasas() {
-      if (!SHEET_ID || SHEET_ID.includes('PEGA_AQUI')) return;
       try {
         const res = await fetch(URL_TASAS);
         const text = await res.text();
         const json = JSON.parse(text.substr(47).slice(0, -2));
         const rows = json.table.rows;
 
-        // Celda B2 (Fila 2 en Sheets) -> Dólar
+        // Celda B2 -> Dólar (Fila index 0 o 1)
         let tasaUSD = rows[0]?.c[1]?.v || rows[1]?.c[1]?.v || '--.--';
-        // Celda B5 (Fila 5 en Sheets) -> Euro
+        // Celda B5 -> Euro (Fila index 3 o 4)
         let tasaEUR = rows[3]?.c[1]?.v || rows[4]?.c[1]?.v || '--.--';
 
         document.getElementById('tasa-usd').innerText = `Bs. ${typeof tasaUSD === 'number' ? tasaUSD.toFixed(2) : tasaUSD}`;
