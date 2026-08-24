@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>TV 1 - Charcutería Shanghai</title>
+  
+  <!-- Carga de la fuente Lato Heavy de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+
   <style>
     * { 
       box-sizing: border-box; 
@@ -15,7 +21,8 @@
       height: 100vh; 
       overflow: hidden; 
       background-color: #000; 
-      font-family: 'Arial Black', sans-serif; 
+      font-family: 'Lato', sans-serif;
+      font-weight: 900; 
     }
     
     .contenedor-pantalla {
@@ -25,7 +32,6 @@
       overflow: hidden;
     }
 
-    /* Video de Fondo a Pantalla Completa */
     #bg-video { 
       position: absolute; 
       top: 0; 
@@ -36,7 +42,6 @@
       z-index: 1; 
     }
 
-    /* Capa Superior */
     .menu-overlay { 
       position: absolute; 
       top: 0; 
@@ -47,64 +52,66 @@
       pointer-events: none; 
     }
 
-    /* Estilos de los Precios */
+    /* ESTILO DE PRECIOS - ROJO #ac1a12 Y LATO HEAVY */
     .precio { 
       position: absolute; 
-      font-size: 1.35vw; 
+      font-family: 'Lato', sans-serif;
+      font-size: 1.3vw; 
       font-weight: 900; 
-      color: #000000; 
+      color: #ac1a12; 
       text-align: right; 
-      width: 5%; 
+      width: 6vw; 
     }
 
-    /* --- ALINEACIÓN PRECISA DE PRECIOS --- */
+    /* --- ALINEACIÓN EXACTA A LA DERECHA DE "Ref." --- */
 
-    /* JAMONES (Columna Centro - Alineados con Ref.) */
-    #p_jamon_1 { top: 18.2%; left: 58.5%; }
-    #p_jamon_2 { top: 22.0%; left: 58.5%; }
-    #p_jamon_3 { top: 25.8%; left: 58.5%; }
-    #p_jamon_4 { top: 29.6%; left: 58.5%; }
-    #p_jamon_5 { top: 33.4%; left: 58.5%; }
-    #p_jamon_6 { top: 37.2%; left: 58.5%; }
-    #p_jamon_7 { top: 41.0%; left: 58.5%; }
-    #p_jamon_8 { top: 44.8%; left: 58.5%; }
-    #p_jamon_9 { top: 48.6%; left: 58.5%; }
+    /* JAMONES */
+    #p_jamon_1 { top: 22.0%; left: 60.0%; }
+    #p_jamon_2 { top: 25.4%; left: 60.0%; }
+    #p_jamon_3 { top: 28.8%; left: 60.0%; }
+    #p_jamon_4 { top: 32.2%; left: 60.0%; }
+    #p_jamon_5 { top: 35.6%; left: 60.0%; }
+    #p_jamon_6 { top: 39.0%; left: 60.0%; }
+    #p_jamon_7 { top: 42.4%; left: 60.0%; }
+    #p_jamon_8 { top: 45.8%; left: 60.0%; }
+    #p_jamon_9 { top: 49.2%; left: 60.0%; }
 
-    /* PECHUGAS (Columna Derecha Superior) */
-    #p_pechuga_1 { top: 18.0%; left: 91.2%; }
-    #p_pechuga_2 { top: 21.8%; left: 91.2%; }
-    #p_pechuga_3 { top: 25.6%; left: 91.2%; }
-    #p_pechuga_4 { top: 29.4%; left: 91.2%; }
-    #p_pechuga_5 { top: 33.2%; left: 91.2%; }
+    /* PECHUGAS */
+    #p_pechuga_1 { top: 21.0%; left: 91.5%; }
+    #p_pechuga_2 { top: 24.4%; left: 91.5%; }
+    #p_pechuga_3 { top: 27.8%; left: 91.5%; }
+    #p_pechuga_4 { top: 31.2%; left: 91.5%; }
+    #p_pechuga_5 { top: 34.6%; left: 91.5%; }
 
-    /* MORTADELAS (Columna Derecha Inferior) */
-    #p_mortadela_1 { top: 51.8%; left: 91.2%; }
-    #p_mortadela_2 { top: 55.6%; left: 91.2%; }
-    #p_mortadela_3 { top: 59.4%; left: 91.2%; }
-    #p_mortadela_4 { top: 63.2%; left: 91.2%; }
-    #p_mortadela_5 { top: 67.0%; left: 91.2%; }
+    /* MORTADELAS */
+    #p_mortadela_1 { top: 52.0%; left: 91.5%; }
+    #p_mortadela_2 { top: 55.4%; left: 91.5%; }
+    #p_mortadela_3 { top: 58.8%; left: 91.5%; }
+    #p_mortadela_4 { top: 62.2%; left: 91.5%; }
+    #p_mortadela_5 { top: 65.6%; left: 91.5%; }
 
-    /* --- MARQUESINA SOBRE FRANCIA VINOTINTO --- */
+    /* --- MARQUESINA CENTRADA EN LA FRANJA INFERIOR --- */
     .marquesina-contenedor {
       position: absolute;
-      bottom: 0.8%;      /* Posiciona exactamente sobre la franja vinotinto */
-      left: 0.5%;
-      width: 26.5%;     /* Cubre la franja vinotinto del extremo inferior izquierdo */
-      height: 4.8%;     /* Ajusta la altura dentro de la franja */
+      bottom: 0px;
+      left: 0px;
+      width: 32vw;     
+      height: 3.2vh;     
       overflow: hidden;
       display: flex;
       align-items: center;
       z-index: 10;
+      background: transparent;
     }
 
     .marquesina-texto {
       display: inline-block;
       white-space: nowrap;
-      font-family: 'Arial', sans-serif;
-      font-size: 1.0vw;
-      font-weight: bold;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85vw;
+      font-weight: 900;
       color: #FFFFFF;
-      animation: moverMarquesina 10s linear infinite;
+      animation: moverMarquesina 14s linear infinite;
     }
 
     .marquesina-texto span {
@@ -150,17 +157,16 @@
       <div id="p_mortadela_4" class="precio">--.--</div>
       <div id="p_mortadela_5" class="precio">--.--</div>
 
-      <!-- Marquesina Tasa BCV -->
+      <!-- Marquesina Tasa BCV y EURO -->
       <div class="marquesina-contenedor">
         <div class="marquesina-texto">
-          TASA BCV DEL DÍA: <span id="tasa-usd">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI
+          TASA BCV DEL DÍA: <span id="tasa-usd">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; EURO: <span id="tasa-eur">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Asegurar reproducción continua del video
     document.addEventListener("DOMContentLoaded", function() {
       const video = document.getElementById("bg-video");
       if (video) {
@@ -168,67 +174,89 @@
       }
     });
 
-    // REEMPLAZA ESTE ID CON EL ID REAL DE TU GOOGLE SHEETS
-    const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE'; 
+    const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE';
 
-    const URL_PRECIOS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja2`;
-    const URL_TASAS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja3`;
+    function cargarDatos() {
+      // Petición dinámica mediante script tag para bypass de CORS/GoogleViz
+      const script = document.createElement('script');
+      script.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=responseHandler:procesarSheets`;
+      document.body.appendChild(script);
+    }
 
-    async function actualizarPrecios() {
-      if (!SHEET_ID || SHEET_ID.includes('COLOCA_AQUI')) return;
+    window.procesarSheets = function(data) {
       try {
-        const res = await fetch(URL_PRECIOS);
-        const text = await res.text();
-        const json = JSON.parse(text.substr(47).slice(0, -2));
-        const rows = json.table.rows;
+        // Hoja2 (Precios): Google une todas las hojas si no especificamos, pero leemos directo las filas
+        // Para asegurar lectura por nombre de hoja, llamamos a los endpoints de la API:
+        fetchPrecios();
+        fetchTasas();
+      } catch (e) {
+        console.error("Error procesando:", e);
+      }
+    };
 
-        // Jamones
+    async function fetchPrecios() {
+      try {
+        const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Hoja2`);
+        const text = await res.text();
+        const filas = text.split('\n').map(r => r.split(',').map(c => c.replace(/"/g, '').trim()));
+
+        // Jamones (Filas 3 a 11 en Excel -> índices 2 a 10)
         for (let i = 0; i < 9; i++) {
-          let val = rows[i + 2]?.c[3]?.v;
-          if (val !== undefined && val !== null) {
-            document.getElementById(`p_jamon_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = parseFloat(filas[i + 2]?.[3]);
+          if (!isNaN(val)) {
+            document.getElementById(`p_jamon_${i+1}`).innerText = val.toFixed(2);
           }
         }
 
-        // Pechugas
+        // Pechugas (Filas 13 a 17 en Excel -> índices 12 a 16)
         for (let i = 0; i < 5; i++) {
-          let val = rows[i + 12]?.c[3]?.v;
-          if (val !== undefined && val !== null) {
-            document.getElementById(`p_pechuga_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = parseFloat(filas[i + 12]?.[3]);
+          if (!isNaN(val)) {
+            document.getElementById(`p_pechuga_${i+1}`).innerText = val.toFixed(2);
           }
         }
 
-        // Mortadelas
+        // Mortadelas (Filas 24 a 28 en Excel -> índices 23 a 27)
         for (let i = 0; i < 5; i++) {
-          let val = rows[i + 23]?.c[3]?.v;
-          if (val !== undefined && val !== null) {
-            document.getElementById(`p_mortadela_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = parseFloat(filas[i + 23]?.[3]);
+          if (!isNaN(val)) {
+            document.getElementById(`p_mortadela_${i+1}`).innerText = val.toFixed(2);
           }
         }
       } catch (e) {
-        console.error("Error al obtener precios:", e);
+        console.error("Error al obtener Precios CSV:", e);
       }
     }
 
-    async function actualizarTasa() {
-      if (!SHEET_ID || SHEET_ID.includes('COLOCA_AQUI')) return;
+    async function fetchTasas() {
       try {
-        const res = await fetch(URL_TASAS);
+        const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Hoja3`);
         const text = await res.text();
-        const json = JSON.parse(text.substr(47).slice(0, -2));
-        const rows = json.table.rows;
+        const filas = text.split('\n').map(r => r.split(',').map(c => c.replace(/"/g, '').trim()));
 
-        let tasaUSD = rows[1]?.c[1]?.v || '--.--';
-        document.getElementById('tasa-usd').innerText = `Bs. ${typeof tasaUSD === 'number' ? tasaUSD.toFixed(2) : tasaUSD}`;
+        // Celda B2 -> Dólar (Fila índice 1, Columna B índice 1)
+        let usd = parseFloat(filas[1]?.[1]);
+        // Celda B5 -> Euro (Fila índice 4, Columna B índice 1)
+        let eur = parseFloat(filas[4]?.[1]);
+
+        if (!isNaN(usd)) {
+          document.getElementById('tasa-usd').innerText = `Bs. ${usd.toFixed(2)}`;
+        }
+        if (!isNaN(eur)) {
+          document.getElementById('tasa-eur').innerText = `Bs. ${eur.toFixed(2)}`;
+        }
       } catch (e) {
-        console.error("Error al obtener la tasa:", e);
+        console.error("Error al obtener Tasas CSV:", e);
       }
     }
 
-    actualizarPrecios();
-    actualizarTasa();
-    setInterval(actualizarPrecios, 30000);
-    setInterval(actualizarTasa, 30000);
+    // Carga inicial y refresco cada 30 segundos
+    fetchPrecios();
+    fetchTasas();
+    setInterval(() => {
+      fetchPrecios();
+      fetchTasas();
+    }, 30000);
   </script>
 </body>
 </html>
