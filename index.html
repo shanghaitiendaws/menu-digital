@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>TV 1 - Charcutería Shanghai</title>
   
-  <!-- Fuente Lato desde Google Fonts -->
+  <!-- Carga de la fuente Lato Heavy de Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
@@ -56,58 +56,59 @@
     .precio { 
       position: absolute; 
       font-family: 'Lato', sans-serif;
-      font-size: 1.4vw; 
+      font-size: 1.3vw; 
       font-weight: 900; 
       color: #ac1a12; 
       text-align: right; 
-      width: 5%; 
+      width: 6vw; 
     }
 
-    /* --- POSICIONES AJUSTADAS AL LADO DE CADA REF. --- */
+    /* --- ALINEACIÓN EXACTA A LA DERECHA DE "Ref." --- */
 
     /* JAMONES */
-    #p_jamon_1 { top: 22.0%; left: 56.5%; }
-    #p_jamon_2 { top: 25.5%; left: 56.5%; }
-    #p_jamon_3 { top: 29.2%; left: 56.5%; }
-    #p_jamon_4 { top: 32.8%; left: 56.5%; }
-    #p_jamon_5 { top: 36.4%; left: 56.5%; }
-    #p_jamon_6 { top: 40.0%; left: 56.5%; }
-    #p_jamon_7 { top: 43.6%; left: 56.5%; }
-    #p_jamon_8 { top: 47.2%; left: 56.5%; }
-    #p_jamon_9 { top: 50.8%; left: 56.5%; }
+    #p_jamon_1 { top: 22.0%; left: 60.0%; }
+    #p_jamon_2 { top: 25.4%; left: 60.0%; }
+    #p_jamon_3 { top: 28.8%; left: 60.0%; }
+    #p_jamon_4 { top: 32.2%; left: 60.0%; }
+    #p_jamon_5 { top: 35.6%; left: 60.0%; }
+    #p_jamon_6 { top: 39.0%; left: 60.0%; }
+    #p_jamon_7 { top: 42.4%; left: 60.0%; }
+    #p_jamon_8 { top: 45.8%; left: 60.0%; }
+    #p_jamon_9 { top: 49.2%; left: 60.0%; }
 
     /* PECHUGAS */
-    #p_pechuga_1 { top: 21.6%; left: 92.2%; }
-    #p_pechuga_2 { top: 25.2%; left: 92.2%; }
-    #p_pechuga_3 { top: 28.8%; left: 92.2%; }
-    #p_pechuga_4 { top: 32.4%; left: 92.2%; }
-    #p_pechuga_5 { top: 36.0%; left: 92.2%; }
+    #p_pechuga_1 { top: 21.0%; left: 91.5%; }
+    #p_pechuga_2 { top: 24.4%; left: 91.5%; }
+    #p_pechuga_3 { top: 27.8%; left: 91.5%; }
+    #p_pechuga_4 { top: 31.2%; left: 91.5%; }
+    #p_pechuga_5 { top: 34.6%; left: 91.5%; }
 
     /* MORTADELAS */
-    #p_mortadela_1 { top: 52.4%; left: 92.2%; }
-    #p_mortadela_2 { top: 56.0%; left: 92.2%; }
-    #p_mortadela_3 { top: 59.6%; left: 92.2%; }
-    #p_mortadela_4 { top: 63.2%; left: 92.2%; }
-    #p_mortadela_5 { top: 66.8%; left: 92.2%; }
+    #p_mortadela_1 { top: 52.0%; left: 91.5%; }
+    #p_mortadela_2 { top: 55.4%; left: 91.5%; }
+    #p_mortadela_3 { top: 58.8%; left: 91.5%; }
+    #p_mortadela_4 { top: 62.2%; left: 91.5%; }
+    #p_mortadela_5 { top: 65.6%; left: 91.5%; }
 
-    /* --- MARQUESINA CENTRADA EN LA FRANJA NEGRA/ROJA --- */
+    /* --- MARQUESINA CENTRADA EN LA FRANJA INFERIOR --- */
     .marquesina-contenedor {
       position: absolute;
-      bottom: 0.1%;
-      left: 0.2%;
-      width: 29.8%;     
-      height: 3.8%;     
+      bottom: 0px;
+      left: 0px;
+      width: 32vw;     
+      height: 3.2vh;     
       overflow: hidden;
       display: flex;
       align-items: center;
       z-index: 10;
+      background: transparent;
     }
 
     .marquesina-texto {
       display: inline-block;
       white-space: nowrap;
       font-family: 'Lato', sans-serif;
-      font-size: 0.9vw;
+      font-size: 0.85vw;
       font-weight: 900;
       color: #FFFFFF;
       animation: moverMarquesina 14s linear infinite;
@@ -173,70 +174,89 @@
       }
     });
 
-    // ID de tu Google Sheets
-    const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE'; 
+    const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE';
 
-    const URL_PRECIOS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja2`;
-    const URL_TASAS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja3`;
+    function cargarDatos() {
+      // Petición dinámica mediante script tag para bypass de CORS/GoogleViz
+      const script = document.createElement('script');
+      script.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=responseHandler:procesarSheets`;
+      document.body.appendChild(script);
+    }
 
-    async function actualizarPrecios() {
+    window.procesarSheets = function(data) {
       try {
-        const res = await fetch(URL_PRECIOS);
-        const text = await res.text();
-        const json = JSON.parse(text.substr(47).slice(0, -2));
-        const rows = json.table.rows;
+        // Hoja2 (Precios): Google une todas las hojas si no especificamos, pero leemos directo las filas
+        // Para asegurar lectura por nombre de hoja, llamamos a los endpoints de la API:
+        fetchPrecios();
+        fetchTasas();
+      } catch (e) {
+        console.error("Error procesando:", e);
+      }
+    };
 
-        // Jamones
+    async function fetchPrecios() {
+      try {
+        const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Hoja2`);
+        const text = await res.text();
+        const filas = text.split('\n').map(r => r.split(',').map(c => c.replace(/"/g, '').trim()));
+
+        // Jamones (Filas 3 a 11 en Excel -> índices 2 a 10)
         for (let i = 0; i < 9; i++) {
-          let val = rows[i + 2]?.c[3]?.v;
-          if (val !== undefined && val !== null) {
-            document.getElementById(`p_jamon_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = parseFloat(filas[i + 2]?.[3]);
+          if (!isNaN(val)) {
+            document.getElementById(`p_jamon_${i+1}`).innerText = val.toFixed(2);
           }
         }
 
-        // Pechugas
+        // Pechugas (Filas 13 a 17 en Excel -> índices 12 a 16)
         for (let i = 0; i < 5; i++) {
-          let val = rows[i + 12]?.c[3]?.v;
-          if (val !== undefined && val !== null) {
-            document.getElementById(`p_pechuga_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = parseFloat(filas[i + 12]?.[3]);
+          if (!isNaN(val)) {
+            document.getElementById(`p_pechuga_${i+1}`).innerText = val.toFixed(2);
           }
         }
 
-        // Mortadelas
+        // Mortadelas (Filas 24 a 28 en Excel -> índices 23 a 27)
         for (let i = 0; i < 5; i++) {
-          let val = rows[i + 23]?.c[3]?.v;
-          if (val !== undefined && val !== null) {
-            document.getElementById(`p_mortadela_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = parseFloat(filas[i + 23]?.[3]);
+          if (!isNaN(val)) {
+            document.getElementById(`p_mortadela_${i+1}`).innerText = val.toFixed(2);
           }
         }
       } catch (e) {
-        console.error("Error al obtener precios:", e);
+        console.error("Error al obtener Precios CSV:", e);
       }
     }
 
-    async function actualizarTasas() {
+    async function fetchTasas() {
       try {
-        const res = await fetch(URL_TASAS);
+        const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Hoja3`);
         const text = await res.text();
-        const json = JSON.parse(text.substr(47).slice(0, -2));
-        const rows = json.table.rows;
+        const filas = text.split('\n').map(r => r.split(',').map(c => c.replace(/"/g, '').trim()));
 
-        // Celda B2 -> Dólar (Fila index 0 o 1)
-        let tasaUSD = rows[0]?.c[1]?.v || rows[1]?.c[1]?.v || '--.--';
-        // Celda B5 -> Euro (Fila index 3 o 4)
-        let tasaEUR = rows[3]?.c[1]?.v || rows[4]?.c[1]?.v || '--.--';
+        // Celda B2 -> Dólar (Fila índice 1, Columna B índice 1)
+        let usd = parseFloat(filas[1]?.[1]);
+        // Celda B5 -> Euro (Fila índice 4, Columna B índice 1)
+        let eur = parseFloat(filas[4]?.[1]);
 
-        document.getElementById('tasa-usd').innerText = `Bs. ${typeof tasaUSD === 'number' ? tasaUSD.toFixed(2) : tasaUSD}`;
-        document.getElementById('tasa-eur').innerText = `Bs. ${typeof tasaEUR === 'number' ? tasaEUR.toFixed(2) : tasaEUR}`;
+        if (!isNaN(usd)) {
+          document.getElementById('tasa-usd').innerText = `Bs. ${usd.toFixed(2)}`;
+        }
+        if (!isNaN(eur)) {
+          document.getElementById('tasa-eur').innerText = `Bs. ${eur.toFixed(2)}`;
+        }
       } catch (e) {
-        console.error("Error al obtener las tasas:", e);
+        console.error("Error al obtener Tasas CSV:", e);
       }
     }
 
-    actualizarPrecios();
-    actualizarTasas();
-    setInterval(actualizarPrecios, 30000);
-    setInterval(actualizarTasas, 30000);
+    // Carga inicial y refresco cada 30 segundos
+    fetchPrecios();
+    fetchTasas();
+    setInterval(() => {
+      fetchPrecios();
+      fetchTasas();
+    }, 30000);
   </script>
 </body>
 </html>
