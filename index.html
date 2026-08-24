@@ -184,36 +184,35 @@
 
     const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE';
 
-    // Función callback global para procesar Precios (Hoja2)
-    window.procesarPrecios = function(data) {
-      if (!data || !data.table || !data.table.rows) return;
-      const rows = data.table.rows;
+   // Función callback global para procesar Precios (Hoja2)
+window.procesarPrecios = function(data) {
+  if (!data || !data.table || !data.table.rows) return;
+  const rows = data.table.rows;
 
-      // Jamones (filas 3 a 11 en Excel -> índices 2 a 10)
-      for (let i = 0; i < 9; i++) {
-        let v = rows[i + 2]?.c[3]?.v;
-        if (v !== undefined && v !== null) {
-          document.getElementById(`p_jamon_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-        }
-      }
+  // Jamones: Filas 3 a 11 en Excel (índices 1 a 9 en rows)
+  for (let i = 0; i < 9; i++) {
+    let v = rows[i + 1]?.c[3]?.v;
+    if (v !== undefined && v !== null) {
+      document.getElementById(`p_jamon_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+    }
+  }
 
-      // Pechugas (filas 13 a 17 en Excel -> índices 12 a 16)
-      for (let i = 0; i < 5; i++) {
-        let v = rows[i + 12]?.c[3]?.v;
-        if (v !== undefined && v !== null) {
-          document.getElementById(`p_pechuga_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-        }
-      }
+  // Pechugas: Filas 13 a 17 en Excel (índices 11 a 15 en rows)
+  for (let i = 0; i < 5; i++) {
+    let v = rows[i + 11]?.c[3]?.v;
+    if (v !== undefined && v !== null) {
+      document.getElementById(`p_pechuga_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+    }
+  }
 
-      // Mortadelas (filas 24 a 28 en Excel -> índices 23 a 27)
-      for (let i = 0; i < 5; i++) {
-        let v = rows[i + 23]?.c[3]?.v;
-        if (v !== undefined && v !== null) {
-          document.getElementById(`p_mortadela_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-        }
-      }
-    };
-
+  // Mortadelas: Filas 24 a 28 en Excel (índices 22 a 26 en rows)
+  for (let i = 0; i < 5; i++) {
+    let v = rows[i + 22]?.c[3]?.v;
+    if (v !== undefined && v !== null) {
+      document.getElementById(`p_mortadela_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+    }
+  }
+};
     
   // Función callback global para procesar Tasas (Hoja3)
 window.procesarTasas = function(data) {
