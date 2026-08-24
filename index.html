@@ -216,20 +216,25 @@
 
     // Función callback global para procesar Tasas (Hoja3)
     window.procesarTasas = function(data) {
-      if (!data || !data.table || !data.table.rows) return;
-      const rows = data.table.rows;
+  if (!data || !data.table || !data.table.rows) return;
+  const rows = data.table.rows;
 
-      let usd = rows[1]?.c[1]?.v || rows[0]?.c[1]?.v;
-      let eur = rows[4]?.c[1]?.v || rows[3]?.c[1]?.v;
+  // Extraer los valores devueltos de la Hoja3
+  // (Ajusta los índices si están en filas específicas de Hoja3)
+  let usdVal = rows[0]?.c[1]?.v || rows[1]?.c[1]?.v; 
+  let eurVal = rows[1]?.c[1]?.v || rows[2]?.c[1]?.v;
 
-      if (usd !== undefined && usd !== null) {
-        document.getElementById('tasa-usd').innerText = `Bs. ${typeof usd === 'number' ? usd.toFixed(2) : usd}`;
-      }
-      if (eur !== undefined && eur !== null) {
-        document.getElementById('tasa-eur').innerText = `Bs. ${typeof eur === 'number' ? eur.toFixed(2) : eur}`;
-      }
-    };
+  // Formatear a dos decimales con coma o punto
+  let txtUsd = usdVal !== undefined && usdVal !== null ? `Bs. ${Number(usdVal).toFixed(2).replace('.', ',')}` : 'Bs. --.--';
+  let txtEur = eurVal !== undefined && eurVal !== null ? `Bs. ${Number(eurVal).toFixed(2).replace('.', ',')}` : 'Bs. --.--';
 
+  // Actualizar los IDs originales y los duplicados para la marquesina continua
+  if (document.getElementById('tasa-usd')) document.getElementById('tasa-usd').innerText = txtUsd;
+  if (document.getElementById('tasa-eur')) document.getElementById('tasa-eur').innerText = txtEur;
+  if (document.getElementById('tasa-usd-dup')) document.getElementById('tasa-usd-dup').innerText = txtUsd;
+  if (document.getElementById('tasa-eur-dup')) document.getElementById('tasa-eur-dup').innerText = txtEur;
+};
+    
     function pedirDatos() {
       // Script dinámico para Precios (Hoja2)
       const scriptPrecios = document.createElement('script');
