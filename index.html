@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>TV 1 - Charcutería Shanghai</title>
   
-  <!-- Fuente Lato Heavy -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
@@ -52,7 +51,7 @@
       pointer-events: none; 
     }
 
-    /* ESTILO DE PRECIOS - COLOR ROJO Y FUENTE LATO HEAVY */
+    /* ESTILO DE PRECIOS */
     .precio { 
       position: absolute; 
       font-family: 'Lato', sans-serif;
@@ -60,42 +59,40 @@
       font-weight: 900; 
       color: #ac1a12; 
       text-align: right; 
-      width: 5vw; 
+      width: 6vw; 
     }
 
-    /* --- ALINEACIÓN PRECISA DE PRECIOS --- */
+    /* JAMONES */
+    #p_jamon_1 { top: 22.0%; left: 60.0%; }
+    #p_jamon_2 { top: 25.4%; left: 60.0%; }
+    #p_jamon_3 { top: 28.8%; left: 60.0%; }
+    #p_jamon_4 { top: 32.2%; left: 60.0%; }
+    #p_jamon_5 { top: 35.6%; left: 60.0%; }
+    #p_jamon_6 { top: 39.0%; left: 60.0%; }
+    #p_jamon_7 { top: 42.4%; left: 60.0%; }
+    #p_jamon_8 { top: 45.8%; left: 60.0%; }
+    #p_jamon_9 { top: 49.2%; left: 60.0%; }
 
-    /* JAMONES (Columna izquierda) */
-    #p_jamon_1 { top: 22.0%; left: 63.5%; }
-    #p_jamon_2 { top: 25.4%; left: 63.5%; }
-    #p_jamon_3 { top: 28.8%; left: 63.5%; }
-    #p_jamon_4 { top: 32.2%; left: 63.5%; }
-    #p_jamon_5 { top: 35.6%; left: 63.5%; }
-    #p_jamon_6 { top: 39.0%; left: 63.5%; }
-    #p_jamon_7 { top: 42.4%; left: 63.5%; }
-    #p_jamon_8 { top: 45.8%; left: 63.5%; }
-    #p_jamon_9 { top: 49.2%; left: 63.5%; }
+    /* PECHUGAS */
+    #p_pechuga_1 { top: 21.0%; left: 91.5%; }
+    #p_pechuga_2 { top: 24.4%; left: 91.5%; }
+    #p_pechuga_3 { top: 27.8%; left: 91.5%; }
+    #p_pechuga_4 { top: 31.2%; left: 91.5%; }
+    #p_pechuga_5 { top: 34.6%; left: 91.5%; }
 
-    /* PECHUGAS (Columna derecha arriba) */
-    #p_pechuga_1 { top: 21.0%; left: 94.0%; }
-    #p_pechuga_2 { top: 24.4%; left: 94.0%; }
-    #p_pechuga_3 { top: 27.8%; left: 94.0%; }
-    #p_pechuga_4 { top: 31.2%; left: 94.0%; }
-    #p_pechuga_5 { top: 34.6%; left: 94.0%; }
+    /* MORTADELAS */
+    #p_mortadela_1 { top: 52.0%; left: 91.5%; }
+    #p_mortadela_2 { top: 55.4%; left: 91.5%; }
+    #p_mortadela_3 { top: 58.8%; left: 91.5%; }
+    #p_mortadela_4 { top: 62.2%; left: 91.5%; }
+    #p_mortadela_5 { top: 65.6%; left: 91.5%; }
 
-    /* MORTADELAS (Columna derecha abajo) */
-    #p_mortadela_1 { top: 52.2%; left: 94.0%; }
-    #p_mortadela_2 { top: 55.6%; left: 94.0%; }
-    #p_mortadela_3 { top: 59.0%; left: 94.0%; }
-    #p_mortadela_4 { top: 62.4%; left: 94.0%; }
-    #p_mortadela_5 { top: 65.8%; left: 94.0%; }
-
-    /* --- MARQUESINA --- */
+    /* MARQUESINA */
     .marquesina-contenedor {
       position: absolute;
       bottom: 0px;
       left: 0px;
-      width: 30vw;     
+      width: 32vw;     
       height: 3.5vh;     
       overflow: hidden;
       display: flex;
@@ -156,7 +153,7 @@
       <div id="p_mortadela_4" class="precio">--.--</div>
       <div id="p_mortadela_5" class="precio">--.--</div>
 
-      <!-- Marquesina Tasa BCV y EURO -->
+      <!-- Marquesina -->
       <div class="marquesina-contenedor">
         <div class="marquesina-texto">
           TASA BCV DEL DÍA: <span id="tasa-usd">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; EURO: <span id="tasa-eur">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI
@@ -175,76 +172,71 @@
 
     const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE';
 
-    // Función auxiliar para parsear líneas de CSV
-    function parsearCSVLineas(texto) {
-      return texto.split('\n').map(linea => {
-        return linea.split(',').map(celda => celda.replace(/^"|"$/g, '').trim());
-      });
+    function obtenerJSON(url) {
+      return fetch(url)
+        .then(res => res.text())
+        .then(texto => {
+          // Extrae el JSON puro devolviendo el contenido exacto de Google Viz
+          const inicio = texto.indexOf('{');
+          const fin = texto.lastIndexOf('}') + 1;
+          return JSON.parse(texto.substring(inicio, fin));
+        });
     }
 
-    async function actualizarPrecios() {
-      try {
-        const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Hoja2`);
-        const text = await res.text();
-        const filas = parsearCSVLineas(text);
+    function cargarPrecios() {
+      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja2`;
+      obtenerJSON(url).then(data => {
+        const rows = data.table.rows;
 
-        // Jamones (Filas 3 a 11 en Excel -> índices 2 a 10)
+        // Jamones
         for (let i = 0; i < 9; i++) {
-          let val = parseFloat(filas[i + 2]?.[3]);
-          if (!isNaN(val)) {
-            document.getElementById(`p_jamon_${i+1}`).innerText = val.toFixed(2);
+          let v = rows[i + 2]?.c[3]?.v;
+          if (v !== undefined && v !== null) {
+            document.getElementById(`p_jamon_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
           }
         }
 
-        // Pechugas (Filas 13 a 17 en Excel -> índices 12 a 16)
+        // Pechugas
         for (let i = 0; i < 5; i++) {
-          let val = parseFloat(filas[i + 12]?.[3]);
-          if (!isNaN(val)) {
-            document.getElementById(`p_pechuga_${i+1}`).innerText = val.toFixed(2);
+          let v = rows[i + 12]?.c[3]?.v;
+          if (v !== undefined && v !== null) {
+            document.getElementById(`p_pechuga_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
           }
         }
 
-        // Mortadelas (Filas 24 a 28 en Excel -> índices 23 a 27)
+        // Mortadelas
         for (let i = 0; i < 5; i++) {
-          let val = parseFloat(filas[i + 23]?.[3]);
-          if (!isNaN(val)) {
-            document.getElementById(`p_mortadela_${i+1}`).innerText = val.toFixed(2);
+          let v = rows[i + 23]?.c[3]?.v;
+          if (v !== undefined && v !== null) {
+            document.getElementById(`p_mortadela_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
           }
         }
-      } catch (e) {
-        console.error("Error al cargar precios:", e);
-      }
+      }).catch(err => console.log("Error precios:", err));
     }
 
-    async function actualizarTasas() {
-      try {
-        const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Hoja3`);
-        const text = await res.text();
-        const filas = parsearCSVLineas(text);
+    function cargarTasas() {
+      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja3`;
+      obtenerJSON(url).then(data => {
+        const rows = data.table.rows;
 
-        // Celda B2 -> Dólar (Fila 2 -> índice 1)
-        let usd = parseFloat(filas[1]?.[1]);
-        // Celda B5 -> Euro (Fila 5 -> índice 4)
-        let eur = parseFloat(filas[4]?.[1]);
+        // Dólar (Fila 2 -> B2)
+        let usd = rows[1]?.c[1]?.v || rows[0]?.c[1]?.v;
+        // Euro (Fila 5 -> B5)
+        let eur = rows[4]?.c[1]?.v || rows[3]?.c[1]?.v;
 
-        if (!isNaN(usd)) {
-          document.getElementById('tasa-usd').innerText = `Bs. ${usd.toFixed(2)}`;
+        if (usd !== undefined) {
+          document.getElementById('tasa-usd').innerText = `Bs. ${typeof usd === 'number' ? usd.toFixed(2) : usd}`;
         }
-        if (!isNaN(eur)) {
-          document.getElementById('tasa-eur').innerText = `Bs. ${eur.toFixed(2)}`;
+        if (eur !== undefined) {
+          document.getElementById('tasa-eur').innerText = `Bs. ${typeof eur === 'number' ? eur.toFixed(2) : eur}`;
         }
-      } catch (e) {
-        console.error("Error al cargar tasas:", e);
-      }
+      }).catch(err => console.log("Error tasas:", err));
     }
 
-    // Ejecución inicial y temporizador de 30 segundos
-    actualizarPrecios();
-    actualizarTasas();
-    setInterval(() => {
-      actualizarPrecios();
-      actualizarTasas();
-    }, 30000);
+    cargarPrecios();
+    cargarTasas();
+    setInterval(cargarPrecios, 30000);
+    setInterval(cargarTasas, 30000);
   </script>
 </body>
 </html>
