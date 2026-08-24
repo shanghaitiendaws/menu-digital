@@ -215,20 +215,17 @@
     };
 
     // Función callback global para procesar Tasas (Hoja3)
-    window.procesarTasas = function(data) {
+  window.procesarTasas = function(data) {
   if (!data || !data.table || !data.table.rows) return;
   const rows = data.table.rows;
 
-  // Extraer los valores devueltos de la Hoja3
-  // (Ajusta los índices si están en filas específicas de Hoja3)
-  let usdVal = rows[0]?.c[1]?.v || rows[1]?.c[1]?.v; 
-  let eurVal = rows[4]?.c[1]?.v || rows[2]?.c[1]?.v;
+  // Celdas exactas según tu Hoja3:
+  let usdVal = rows[1]?.c[1]?.v; // Fila 2, Columna B
+  let eurVal = rows[4]?.c[1]?.v; // Fila 5, Columna B
 
-  // Formatear a dos decimales con coma o punto
-  let txtUsd = usdVal !== undefined && usdVal !== null ? `Bs. ${Number(usdVal).toFixed(2).replace('.', ',')}` : 'Bs. --.--';
-  let txtEur = eurVal !== undefined && eurVal !== null ? `Bs. ${Number(eurVal).toFixed(2).replace('.', ',')}` : 'Bs. --.--';
+  let txtUsd = usdVal !== undefined && usdVal !== null ? `Bs. ${typeof usdVal === 'number' ? usdVal.toFixed(2) : usdVal}` : 'Bs. --.--';
+  let txtEur = eurVal !== undefined && eurVal !== null ? `Bs. ${typeof eurVal === 'number' ? eurVal.toFixed(2) : eurVal}` : 'Bs. --.--';
 
-  // Actualizar los IDs originales y los duplicados para la marquesina continua
   if (document.getElementById('tasa-usd')) document.getElementById('tasa-usd').innerText = txtUsd;
   if (document.getElementById('tasa-eur')) document.getElementById('tasa-eur').innerText = txtEur;
   if (document.getElementById('tasa-usd-dup')) document.getElementById('tasa-usd-dup').innerText = txtUsd;
