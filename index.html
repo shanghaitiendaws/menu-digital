@@ -222,7 +222,7 @@
   // Extraer los valores devueltos de la Hoja3
   // (Ajusta los índices si están en filas específicas de Hoja3)
   let usdVal = rows[0]?.c[1]?.v || rows[1]?.c[1]?.v; 
-  let eurVal = rows[1]?.c[1]?.v || rows[4]?.c[1]?.v;
+  let eurVal = rows[4]?.c[1]?.v || rows[2]?.c[1]?.v;
 
   // Formatear a dos decimales con coma o punto
   let txtUsd = usdVal !== undefined && usdVal !== null ? `Bs. ${Number(usdVal).toFixed(2).replace('.', ',')}` : 'Bs. --.--';
