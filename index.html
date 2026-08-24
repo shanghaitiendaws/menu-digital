@@ -2,40 +2,41 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>TV 1 - Charcutería</title>
+  <title>TV 1 - Charcutería Shanghai</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body, html { 
-      width: 100vw; 
-      height: 100vh; 
-      overflow: hidden; 
-      font-family: 'Arial Black', sans-serif; 
-      color: #000; 
-      background-color: #000; 
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
     }
     
-    /* Contenedor principal responsive manteniendo aspecto 16:9 de TVs HD/4K */
+    html, body { 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; 
+      background-color: #000; 
+      font-family: 'Arial Black', sans-serif; 
+    }
+    
     .contenedor-pantalla {
       position: relative;
       width: 100vw;
       height: 100vh;
-      aspect-ratio: 16 / 9;
-      margin: 0 auto;
+      overflow: hidden;
     }
 
-    /* Video de fondo responsive */
+    /* Video de Fondo a Pantalla Completa */
     #bg-video { 
       position: absolute; 
       top: 0; 
       left: 0; 
       width: 100%; 
       height: 100%; 
-      object-fit: contain; 
+      object-fit: fill; /* Rellena completamente la pantalla del TV sin dejar bordes */
       z-index: 1; 
     }
 
-    /* Capa superior para montos y marquesina */
+    /* Capa Superior para Precios y Marquesina */
     .menu-overlay { 
       position: absolute; 
       top: 0; 
@@ -46,50 +47,50 @@
       pointer-events: none; 
     }
 
-    /* Estilo base de los precios con fuente en vw (relativa al ancho) */
+    /* Estilos Generales para Precios (Unidades Relativas) */
     .precio { 
       position: absolute; 
-      font-size: 1.35vw; 
-      font-weight: bold; 
-      color: #000; 
+      font-size: 1.4vw; 
+      font-weight: 900; 
+      color: #000000; 
       text-align: right; 
-      width: 6.2%; 
+      width: 7%; 
     }
 
-    /* --- POSICIONAMIENTO EN PORCENTAJES (TV 1) --- */
+    /* --- POSICIONAMIENTO EN PORCENTAJES (%) --- */
 
-    /* JAMONES (Columna Central) */
-    #p_jamon_1 { top: 14.07%; left: 55.72%; }
-    #p_jamon_2 { top: 17.40%; left: 55.72%; }
-    #p_jamon_3 { top: 20.74%; left: 55.72%; }
-    #p_jamon_4 { top: 24.07%; left: 55.72%; }
-    #p_jamon_5 { top: 27.40%; left: 55.72%; }
-    #p_jamon_6 { top: 30.74%; left: 55.72%; }
-    #p_jamon_7 { top: 34.07%; left: 55.72%; }
-    #p_jamon_8 { top: 37.40%; left: 55.72%; }
-    #p_jamon_9 { top: 40.74%; left: 55.72%; }
+    /* JAMONES (Columna Centro) */
+    #p_jamon_1 { top: 14.1%; left: 55.7%; }
+    #p_jamon_2 { top: 17.4%; left: 55.7%; }
+    #p_jamon_3 { top: 20.7%; left: 55.7%; }
+    #p_jamon_4 { top: 24.1%; left: 55.7%; }
+    #p_jamon_5 { top: 27.4%; left: 55.7%; }
+    #p_jamon_6 { top: 30.7%; left: 55.7%; }
+    #p_jamon_7 { top: 34.1%; left: 55.7%; }
+    #p_jamon_8 { top: 37.4%; left: 55.7%; }
+    #p_jamon_9 { top: 40.7%; left: 55.7%; }
 
     /* PECHUGAS (Columna Derecha Superior) */
-    #p_pechuga_1 { top: 12.96%; left: 89.58%; }
-    #p_pechuga_2 { top: 16.29%; left: 89.58%; }
-    #p_pechuga_3 { top: 19.62%; left: 89.58%; }
-    #p_pechuga_4 { top: 22.96%; left: 89.58%; }
-    #p_pechuga_5 { top: 26.29%; left: 89.58%; }
+    #p_pechuga_1 { top: 13.0%; left: 89.6%; }
+    #p_pechuga_2 { top: 16.3%; left: 89.6%; }
+    #p_pechuga_3 { top: 19.6%; left: 89.6%; }
+    #p_pechuga_4 { top: 23.0%; left: 89.6%; }
+    #p_pechuga_5 { top: 26.3%; left: 89.6%; }
 
     /* MORTADELAS (Columna Derecha Inferior) */
-    #p_mortadela_1 { top: 48.14%; left: 89.58%; }
-    #p_mortadela_2 { top: 51.48%; left: 89.58%; }
-    #p_mortadela_3 { top: 54.81%; left: 89.58%; }
-    #p_mortadela_4 { top: 58.14%; left: 89.58%; }
-    #p_mortadela_5 { top: 61.48%; left: 89.58%; }
+    #p_mortadela_1 { top: 48.1%; left: 89.6%; }
+    #p_mortadela_2 { top: 51.5%; left: 89.6%; }
+    #p_mortadela_3 { top: 54.8%; left: 89.6%; }
+    #p_mortadela_4 { top: 58.1%; left: 89.6%; }
+    #p_mortadela_5 { top: 61.5%; left: 89.6%; }
 
-    /* --- MARQUESINA EN FRAGMA VINOTINTO --- */
+    /* --- MARQUESINA EN EL RECTÁNGULO VINOTINTO --- */
     .marquesina-contenedor {
       position: absolute;
       bottom: 0%;
       left: 0%;
-      width: 25%;      /* Ocupa exactamente el tramo vinotinto */
-      height: 5.5%;    /* Altura proporcional del tramo */
+      width: 25%;       /* Ocupa el ancho del tramo vinotinto inferior izquierdo */
+      height: 5.5%;     /* Altura de la franja */
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -100,18 +101,18 @@
       display: inline-block;
       white-space: nowrap;
       font-family: 'Arial', sans-serif;
-      font-size: 1.15vw;
+      font-size: 1.1vw;
       font-weight: bold;
       color: #FFFFFF;
       animation: moverMarquesina 12s linear infinite;
     }
 
     .marquesina-texto span {
-      color: #FFC107; /* Color amarillo/dorado para resaltar la tasa */
+      color: #FFC107; /* Amarillo resaltado para la tasa */
     }
 
     @keyframes moverMarquesina {
-      0% { transform: translateX(100%); }
+      0%   { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
   </style>
@@ -119,39 +120,40 @@
 <body>
 
   <div class="contenedor-pantalla">
-    <!-- Video de fondo en bucle -->
-    <video autoplay muted loop id="bg-video">
+    <!-- Video de fondo configurado para Autoplay obligatorio -->
+    <video id="bg-video" autoplay muted loop playsinline preload="auto">
       <source src="plantilla_charcuteria.mp4" type="video/mp4">
+      Tu navegador no soporta reproducción de video.
     </video>
 
-    <!-- Precios y marquesina montados en capas -->
+    <!-- Capa de Precios y Marquesina -->
     <div class="menu-overlay">
       <!-- Jamones -->
-      <div id="p_jamon_1" class="precio">--.--</div>
-      <div id="p_jamon_2" class="precio">--.--</div>
-      <div id="p_jamon_3" class="precio">--.--</div>
-      <div id="p_jamon_4" class="precio">--.--</div>
-      <div id="p_jamon_5" class="precio">--.--</div>
-      <div id="p_jamon_6" class="precio">--.--</div>
-      <div id="p_jamon_7" class="precio">--.--</div>
-      <div id="p_jamon_8" class="precio">--.--</div>
-      <div id="p_jamon_9" class="precio">--.--</div>
+      <div id="p_jamon_1" class="precio">11.40</div>
+      <div id="p_jamon_2" class="precio">8.90</div>
+      <div id="p_jamon_3" class="precio">11.80</div>
+      <div id="p_jamon_4" class="precio">10.80</div>
+      <div id="p_jamon_5" class="precio">8.20</div>
+      <div id="p_jamon_6" class="precio">10.30</div>
+      <div id="p_jamon_7" class="precio">8.70</div>
+      <div id="p_jamon_8" class="precio">8.50</div>
+      <div id="p_jamon_9" class="precio">7.90</div>
 
       <!-- Pechugas -->
-      <div id="p_pechuga_1" class="precio">--.--</div>
-      <div id="p_pechuga_2" class="precio">--.--</div>
-      <div id="p_pechuga_3" class="precio">--.--</div>
-      <div id="p_pechuga_4" class="precio">--.--</div>
-      <div id="p_pechuga_5" class="precio">--.--</div>
+      <div id="p_pechuga_1" class="precio">9.70</div>
+      <div id="p_pechuga_2" class="precio">8.80</div>
+      <div id="p_pechuga_3" class="precio">8.80</div>
+      <div id="p_pechuga_4" class="precio">11.40</div>
+      <div id="p_pechuga_5" class="precio">11.00</div>
 
       <!-- Mortadelas -->
-      <div id="p_mortadela_1" class="precio">--.--</div>
-      <div id="p_mortadela_2" class="precio">--.--</div>
-      <div id="p_mortadela_3" class="precio">--.--</div>
-      <div id="p_mortadela_4" class="precio">--.--</div>
-      <div id="p_mortadela_5" class="precio">--.--</div>
+      <div id="p_mortadela_1" class="precio">11.50</div>
+      <div id="p_mortadela_2" class="precio">8.20</div>
+      <div id="p_mortadela_3" class="precio">17.00</div>
+      <div id="p_mortadela_4" class="precio">55.00</div>
+      <div id="p_mortadela_5" class="precio">19.00</div>
 
-      <!-- Marquesina Tasa BCV (Ubicada en el rectángulo vinotinto) -->
+      <!-- Marquesina Tasa BCV -->
       <div class="marquesina-contenedor">
         <div class="marquesina-texto">
           TASA BCV DEL DÍA: <span id="tasa-usd">Bs. --.--</span> &nbsp;&nbsp;•&nbsp;&nbsp; PANADERÍA Y PASTELERÍA SHANGHAI
@@ -161,42 +163,50 @@
   </div>
 
   <script>
-    const SHEET_ID = '1795098953'; 
+    // Asegurar reproducción de video en navegadores estrictos
+    document.addEventListener("DOMContentLoaded", function() {
+      const video = document.getElementById("bg-video");
+      if (video) {
+        video.play().catch(function(error) {
+          console.log("Autoplay bloqueado, reintentando...", error);
+        });
+      }
+    });
+
+    // Configuración de Google Sheets
+    const SHEET_ID = 'TU_ID_DE_GOOGLE_SHEETS_AQUI'; // Reemplaza por tu ID real
     const URL_PRECIOS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja2`;
     const URL_TASAS = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hoja3`;
 
-    // Cargar Precios desde Hoja2
     async function actualizarPrecios() {
+      if (SHEET_ID === 'TU_ID_DE_GOOGLE_SHEETS_AQUI') return;
       try {
         const res = await fetch(URL_PRECIOS);
         const text = await res.text();
         const json = JSON.parse(text.substr(47).slice(0, -2));
         const rows = json.table.rows;
 
-        // Jamones (Celdas D3 a D11 -> Índice de fila 2 a 10)
         for (let i = 0; i < 9; i++) {
-          let val = rows[i + 2]?.c[3]?.v || '--.--';
-          document.getElementById(`p_jamon_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = rows[i + 2]?.c[3]?.v;
+          if (val !== undefined) document.getElementById(`p_jamon_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
         }
 
-        // Pechugas (Celdas D13 a D17 -> Índice de fila 12 a 16)
         for (let i = 0; i < 5; i++) {
-          let val = rows[i + 12]?.c[3]?.v || '--.--';
-          document.getElementById(`p_pechuga_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = rows[i + 12]?.c[3]?.v;
+          if (val !== undefined) document.getElementById(`p_pechuga_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
         }
 
-        // Mortadelas (Celdas D24 a D28 -> Índice de fila 23 a 27)
         for (let i = 0; i < 5; i++) {
-          let val = rows[i + 23]?.c[3]?.v || '--.--';
-          document.getElementById(`p_mortadela_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
+          let val = rows[i + 23]?.c[3]?.v;
+          if (val !== undefined) document.getElementById(`p_mortadela_${i+1}`).innerText = typeof val === 'number' ? val.toFixed(2) : val;
         }
       } catch (e) { 
-        console.error("Error al cargar precios:", e); 
+        console.error("Error cargando precios:", e); 
       }
     }
 
-    // Cargar Tasa del Día desde Hoja3 (Celda B2 -> Fila índice 1, Columna índice 1)
     async function actualizarTasa() {
+      if (SHEET_ID === 'TU_ID_DE_GOOGLE_SHEETS_AQUI') return;
       try {
         const res = await fetch(URL_TASAS);
         const text = await res.text();
@@ -206,11 +216,10 @@
         let tasaUSD = rows[1]?.c[1]?.v || '--.--';
         document.getElementById('tasa-usd').innerText = `Bs. ${typeof tasaUSD === 'number' ? tasaUSD.toFixed(2) : tasaUSD}`;
       } catch (e) { 
-        console.error("Error al cargar la tasa:", e); 
+        console.error("Error cargando la tasa:", e); 
       }
     }
 
-    // Ejecución inicial y refresco automático cada 30 segundos
     actualizarPrecios();
     actualizarTasa();
     setInterval(actualizarPrecios, 30000);
