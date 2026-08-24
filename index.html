@@ -214,14 +214,16 @@
       }
     };
 
-    // Función callback global para procesar Tasas (Hoja3)
-  window.procesarTasas = function(data) {
+    
+  // Función callback global para procesar Tasas (Hoja3)
+window.procesarTasas = function(data) {
   if (!data || !data.table || !data.table.rows) return;
   const rows = data.table.rows;
 
-  // Celdas exactas según tu Hoja3:
-  let usdVal = rows[1]?.c[1]?.v; // Fila 2, Columna B
-  let eurVal = rows[4]?.c[1]?.v; // Fila 5, Columna B
+  // Fila 2 de Excel = rows[0] (784.66)
+  // Fila 5 de Excel = rows[3] (916.00)
+  let usdVal = rows[0]?.c[1]?.v;
+  let eurVal = rows[3]?.c[1]?.v;
 
   let txtUsd = usdVal !== undefined && usdVal !== null ? `Bs. ${typeof usdVal === 'number' ? usdVal.toFixed(2) : usdVal}` : 'Bs. --.--';
   let txtEur = eurVal !== undefined && eurVal !== null ? `Bs. ${typeof eurVal === 'number' ? eurVal.toFixed(2) : eurVal}` : 'Bs. --.--';
