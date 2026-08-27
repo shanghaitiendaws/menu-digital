@@ -245,7 +245,7 @@
         }
         if (precio !== undefined && precio !== null) {
           let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
-          document.getElementById(`p_jamon_${i+1}`).innerText = `Ref. ${val}`;
+          document.getElementById(`p_jamon_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span> ${val}`;
         }
       }
 
