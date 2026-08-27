@@ -147,7 +147,7 @@ window.procesarPrecios = function(data) {
   if (!data || !data.table || !data.table.rows) return;
   const rows = data.table.rows;
 
-  // Chorizos: Filas 3 a 11 en Excel (índices 1 a 9 en rows)
+  // Chorizos: Filas 3 a 11 en Excel (índices 30 a 35 en rows)
   for (let i = 0; i < 6; i++) {
     let v = rows[i + 23]?.c[3]?.v;
     if (v !== undefined && v !== null) {
@@ -164,8 +164,8 @@ window.procesarPrecios = function(data) {
   }
 
   // Quesos: Filas 24 a 28 en Excel (índices 22 a 26 en rows)
-  for (let i = 0; i < 5; i++) {
-    let v = rows[i + 29]?.c[3]?.v;
+  for (let i = 0; i < 6; i++) {
+    let v = rows[i + 30]?.c[3]?.v;
     if (v !== undefined && v !== null) {
       document.getElementById(`p_queso_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
     }
