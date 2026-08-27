@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TV 1 - Charcutería Shanghai</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+
+  <style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    html, body { 
+      width: 100vw; 
+      height: 100vh; 
+      overflow: hidden; 
+      background-color: #000; 
+      font-family: 'Lato', sans-serif;
+      font-weight: 900; 
+    }
+    
+    .contenedor-pantalla {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #bg-video { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      object-fit: fill; 
+      z-index: 1; 
+    }
+
+    .menu-overlay { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      z-index: 2; 
+      pointer-events: none; 
+    }
+
+    /* ESTILO DE PRECIOS */
+    .precio { 
+      position: absolute; 
+      font-family: 'Lato', sans-serif;
+      font-size: 1.4vw; 
+      font-weight: 900; 
+      color: #ac1a12; 
+      text-align: left; 
+      width: 6vw; 
+    }
+
+    /* CHORIZOS */
+    #p_chorizo_1 { top: 17.2%; left: 57.6%; }
+    #p_chorizo_2 { top: 21.0%; left: 57.6%; }
+    #p_chorizo_3 { top: 24.8%; left: 57.6%; }
+    #p_chorizo_4 { top: 28.7%; left: 57.6%; }
+    #p_chorizo_5 { top: 32.6%; left: 57.6%; }
+    #p_chorizo_6 { top: 36.5%; left: 57.6%; }
+
+
+    /* SALCHICHAS */
+    #p_salchicha_1 { top: 17.2%; left: 93.6%; }
+    #p_salchicha_2 { top: 21.0%; left: 93.6%; }
+    #p_salchicha_3 { top: 24.8%; left: 93.6%; }
+    #p_salchicha_4 { top: 28.7%; left: 93.6%; }
+
+
+    /* QUESOS */
+    #p_queso_1 { top: 49.1%; left: 93.6%; }
+    #p_queso_2 { top: 53.1%; left: 93.6%; }
+    #p_queso_3 { top: 56.8%; left: 93.6%; }
+    #p_queso_4 { top: 60.7%; left: 93.6%; }
+    #p_queso_5 { top: 64.6%; left: 93.6%; }
+    #p_queso_6 { top: 68.5%; left: 93.6%; }
+
+    /* SALSAS */
+    #p_salsa_1 { top: 49.1%; left: 93.6%; }
+    #p_salsa_2 { top: 53.1%; left: 93.6%; }
+    #p_salsa_3 { top: 56.8%; left: 93.6%; }
+  
+
+  </style>
+</head>
+<body>
+
+  <div class="contenedor-pantalla">
+    <video id="bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="plantilla_charcuteria.mp4" type="video/mp4">
+    </video>
+
+    <div class="menu-overlay">
+      <!-- Chorizos -->
+      <div id="p_chorizo_1" class="precio">--.--</div>
+      <div id="p_chorizo_2" class="precio">--.--</div>
+      <div id="p_chorizo_3" class="precio">--.--</div>
+      <div id="p_chorizo_4" class="precio">--.--</div>
+      <div id="p_chorizo_5" class="precio">--.--</div>
+      <div id="p_chorizo_6" class="precio">--.--</div>
+
+
+      <!-- Salchichas -->
+      <div id="p_salchicha_1" class="precio">--.--</div>
+      <div id="p_salchicha_2" class="precio">--.--</div>
+      <div id="p_salchicha_3" class="precio">--.--</div>
+      <div id="p_salchicha_4" class="precio">--.--</div>
+    
+
+      <!-- Quesos -->
+      <div id="p_queso_1" class="precio">--.--</div>
+      <div id="p_queso_2" class="precio">--.--</div>
+      <div id="p_queso_3" class="precio">--.--</div>
+      <div id="p_queso_4" class="precio">--.--</div>
+      <div id="p_queso_5" class="precio">--.--</div>
+      <div id="p_queso_6" class="precio">--.--</div>
+
+      <!-- Salsas -->
+      <div id="p_salsa_1" class="precio">--.--</div>
+      <div id="p_salsa_2" class="precio">--.--</div>
+      <div id="p_salsa_3" class="precio">--.--</div>
+      
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const video = document.getElementById("bg-video");
+      if (video) {
+        video.play().catch(function(e) { console.log("Autoplay:", e); });
+      }
+    });
+
+    const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE';
+
+   // Función callback global para procesar Precios (Hoja2)
+window.procesarPrecios = function(data) {
+  if (!data || !data.table || !data.table.rows) return;
+  const rows = data.table.rows;
+
+  // Chorizos: Filas 3 a 11 en Excel (índices 1 a 9 en rows)
+  for (let i = 0; i < 6; i++) {
+    let v = rows[i + 24]?.c[3]?.v;
+    if (v !== undefined && v !== null) {
+      document.getElementById(`p_chorizo_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+    }
+  }
+
+  // Salchichas: Filas 13 a 17 en Excel (índices 11 a 15 en rows)
+  for (let i = 0; i < 4; i++) {
+    let v = rows[i + 14]?.c[3]?.v;
+    if (v !== undefined && v !== null) {
+      document.getElementById(`p_salchicha_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+    }
+  }
+
+  // Quesos: Filas 24 a 28 en Excel (índices 22 a 26 en rows)
+  for (let i = 0; i < 6; i++) {
+    let v = rows[i + 30]?.c[3]?.v;
+    if (v !== undefined && v !== null) {
+      document.getElementById(`p_queso_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+    }
+  }
+
+  // Salsas: Filas 30 a 34 en Excel (índices 28 a 32 en rows)
+  for (let i = 0; i < 3; i++) {
+    let v = rows[i + 36]?.c[3]?.v;
+    if (v !== undefined && v !== null) {
+      document.getElementById(`p_salsa_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
+    }
+  }
+};
+    
+    
+    function pedirDatos() {
+      // Script dinámico para Precios (Hoja2)
+      const scriptPrecios = document.createElement('script');
+      scriptPrecios.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja2&tqx=responseHandler:procesarPrecios`;
+      document.body.appendChild(scriptPrecios);
+
+    }
+
+    // Ejecutar al cargar y cada 30 segundos
+    pedirDatos();
+    setInterval(pedirDatos, 30000);
+  </script>
+</body>
+</html>
