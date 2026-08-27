@@ -173,7 +173,7 @@ window.procesarPrecios = function(data) {
 
   // Salsas: Filas 30 a 34 en Excel (índices 28 a 32 en rows)
   for (let i = 0; i < 3; i++) {
-    let v = rows[i + 35]?.c[3]?.v;
+    let v = rows[i + 34]?.c[3]?.v;
     if (v !== undefined && v !== null) {
       document.getElementById(`p_salsa_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
     }
