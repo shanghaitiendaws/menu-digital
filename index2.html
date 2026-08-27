@@ -157,7 +157,7 @@ window.procesarPrecios = function(data) {
 
   // Salchichas: Filas 13 a 17 en Excel (índices 11 a 15 en rows)
   for (let i = 0; i < 4; i++) {
-    let v = rows[i + 15]?.c[3]?.v;
+    let v = rows[i + 14]?.c[3]?.v;
     if (v !== undefined && v !== null) {
       document.getElementById(`p_salchicha_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
     }
