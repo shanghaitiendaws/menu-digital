@@ -237,8 +237,8 @@
 
       // JAMONES: Filas 3 a 11 en Excel (índices 1 a 9 en rows)
       for (let i = 0; i < 9; i++) {
-        let desc = rows[i + 1]?.c[1]?.v; // Columna B (Descripción)
-        let precio = rows[i + 1]?.c[3]?.v; // Columna D (Precio)
+        let desc = rows[i + 0]?.c[1]?.v; // Columna B (Descripción)
+        let precio = rows[i + 0]?.c[3]?.v; // Columna D (Precio)
 
         if (desc !== undefined && desc !== null) {
           document.getElementById(`d_jamon_${i+1}`).innerText = desc;
@@ -251,8 +251,8 @@
 
       // PECHUGAS: Filas 13 a 17 en Excel (índices 11 a 15 en rows)
       for (let i = 0; i < 5; i++) {
-        let desc = rows[i + 11]?.c[1]?.v;
-        let precio = rows[i + 11]?.c[3]?.v;
+        let desc = rows[i + 9]?.c[1]?.v;
+        let precio = rows[i + 9]?.c[3]?.v;
 
         if (desc !== undefined && desc !== null) {
           document.getElementById(`d_pechuga_${i+1}`).innerText = desc;
@@ -265,8 +265,8 @@
 
       // MORTADELAS: Filas 24 a 28 en Excel (índices 22 a 26 en rows)
       for (let i = 0; i < 5; i++) {
-        let desc = rows[i + 22]?.c[1]?.v;
-        let precio = rows[i + 22]?.c[3]?.v;
+        let desc = rows[i + 18]?.c[1]?.v;
+        let precio = rows[i + 18]?.c[3]?.v;
 
         if (desc !== undefined && desc !== null) {
           document.getElementById(`d_mortadela_${i+1}`).innerText = desc;
