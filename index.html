@@ -51,7 +51,20 @@
       pointer-events: none; 
     }
 
-    /* ESTILO DE PRECIOS */
+    /* ESTILO DE DESCRIPCIONES (NOMBRES) */
+    .descripcion {
+      position: absolute;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.3vw;
+      font-weight: 900;
+      color: #000000;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ESTILO DE PRECIOS CON REF */
     .precio { 
       position: absolute; 
       font-family: 'Lato', sans-serif;
@@ -59,74 +72,105 @@
       font-weight: 900; 
       color: #ac1a12; 
       text-align: left; 
-      width: 6vw; 
+      width: 8vw; 
     }
 
-    /* JAMONES */
-    #p_jamon_1 { top: 17.2%; left: 57.6%; }
-    #p_jamon_2 { top: 21.0%; left: 57.6%; }
-    #p_jamon_3 { top: 24.8%; left: 57.6%; }
-    #p_jamon_4 { top: 28.7%; left: 57.6%; }
-    #p_jamon_5 { top: 32.6%; left: 57.6%; }
-    #p_jamon_6 { top: 36.5%; left: 57.6%; }
-    #p_jamon_7 { top: 40.3%; left: 57.6%; }
-    #p_jamon_8 { top: 44.1%; left: 57.6%; }
-    #p_jamon_9 { top: 48.0%; left: 57.6%; }
+    /* POSICIONES JAMONES (Nombre a la izquierda, Precio a la derecha) */
+    #d_jamon_1 { top: 17.2%; left: 29.5%; width: 23vw; }
+    #p_jamon_1 { top: 17.2%; left: 53.6%; }
 
-    /* PECHUGAS */
-    #p_pechuga_1 { top: 17.2%; left: 93.6%; }
-    #p_pechuga_2 { top: 21.0%; left: 93.6%; }
-    #p_pechuga_3 { top: 24.8%; left: 93.6%; }
-    #p_pechuga_4 { top: 28.7%; left: 93.6%; }
-    #p_pechuga_5 { top: 32.6%; left: 93.6%; }
+    #d_jamon_2 { top: 21.0%; left: 29.5%; width: 23vw; }
+    #p_jamon_2 { top: 21.0%; left: 53.6%; }
 
-    /* MORTADELAS */
-    #p_mortadela_1 { top: 49.1%; left: 93.6%; }
-    #p_mortadela_2 { top: 53.1%; left: 93.6%; }
-    #p_mortadela_3 { top: 56.8%; left: 93.6%; }
-    #p_mortadela_4 { top: 60.7%; left: 93.6%; }
-    #p_mortadela_5 { top: 64.6%; left: 93.6%; }
+    #d_jamon_3 { top: 24.8%; left: 29.5%; width: 23vw; }
+    #p_jamon_3 { top: 24.8%; left: 53.6%; }
 
+    #d_jamon_4 { top: 28.7%; left: 29.5%; width: 23vw; }
+    #p_jamon_4 { top: 28.7%; left: 53.6%; }
+
+    #d_jamon_5 { top: 32.6%; left: 29.5%; width: 23vw; }
+    #p_jamon_5 { top: 32.6%; left: 53.6%; }
+
+    #d_jamon_6 { top: 36.5%; left: 29.5%; width: 23vw; }
+    #p_jamon_6 { top: 36.5%; left: 53.6%; }
+
+    #d_jamon_7 { top: 40.3%; left: 29.5%; width: 23vw; }
+    #p_jamon_7 { top: 40.3%; left: 53.6%; }
+
+    #d_jamon_8 { top: 44.1%; left: 29.5%; width: 23vw; }
+    #p_jamon_8 { top: 44.1%; left: 53.6%; }
+
+    #d_jamon_9 { top: 48.0%; left: 29.5%; width: 23vw; }
+    #p_jamon_9 { top: 48.0%; left: 53.6%; }
+
+    /* POSICIONES PECHUGAS */
+    #d_pechuga_1 { top: 17.2%; left: 65.0%; width: 23vw; }
+    #p_pechuga_1 { top: 17.2%; left: 89.6%; }
+
+    #d_pechuga_2 { top: 21.0%; left: 65.0%; width: 23vw; }
+    #p_pechuga_2 { top: 21.0%; left: 89.6%; }
+
+    #d_pechuga_3 { top: 24.8%; left: 65.0%; width: 23vw; }
+    #p_pechuga_3 { top: 24.8%; left: 89.6%; }
+
+    #d_pechuga_4 { top: 28.7%; left: 65.0%; width: 23vw; }
+    #p_pechuga_4 { top: 28.7%; left: 89.6%; }
+
+    #d_pechuga_5 { top: 32.6%; left: 65.0%; width: 23vw; }
+    #p_pechuga_5 { top: 32.6%; left: 89.6%; }
+
+    /* POSICIONES MORTADELAS */
+    #d_mortadela_1 { top: 49.1%; left: 65.0%; width: 23vw; }
+    #p_mortadela_1 { top: 49.1%; left: 89.6%; }
+
+    #d_mortadela_2 { top: 53.1%; left: 65.0%; width: 23vw; }
+    #p_mortadela_2 { top: 53.1%; left: 89.6%; }
+
+    #d_mortadela_3 { top: 56.8%; left: 65.0%; width: 23vw; }
+    #p_mortadela_3 { top: 56.8%; left: 89.6%; }
+
+    #d_mortadela_4 { top: 60.7%; left: 65.0%; width: 23vw; }
+    #p_mortadela_4 { top: 60.7%; left: 89.6%; }
+
+    #d_mortadela_5 { top: 64.6%; left: 65.0%; width: 23vw; }
+    #p_mortadela_5 { top: 64.6%; left: 89.6%; }
+
+    /* MARQUESINA */
     .marquesina-contenedor {
-  position: absolute;
-  bottom: 5px;
-  left: 0px;
-  width: 26.3vw;     
-  height: 3.5vh;     
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-}
+      position: absolute;
+      bottom: 5px;
+      left: 0px;
+      width: 26.3vw;     
+      height: 3.5vh;     
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+    }
 
-.marquesina-contenido {
-  display: flex;
-  white-space: nowrap;
-  animation: rodarMarquesina 45s linear infinite;
-}
+    .marquesina-contenido {
+      display: flex;
+      white-space: nowrap;
+      animation: rodarMarquesina 45s linear infinite;
+    }
 
-.marquesina-bloque {
-  display: inline-block;
-  white-space: nowrap;
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8vw;
-  font-weight: 900;
-  color: #FFFFFF;
-}
+    .marquesina-bloque {
+      display: inline-block;
+      white-space: nowrap;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.8vw;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
 
-.marquesina-bloque span {
-  color: #FFC107;
-}
+    .marquesina-bloque span {
+      color: #FFC107;
+    }
 
-/* Animación continua perfecta sin espacios vacíos */
-@keyframes rodarMarquesina {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+    @keyframes rodarMarquesina {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body>
@@ -137,42 +181,44 @@
     </video>
 
     <div class="menu-overlay">
-      <!-- Jamones -->
-      <div id="p_jamon_1" class="precio">--.--</div>
-      <div id="p_jamon_2" class="precio">--.--</div>
-      <div id="p_jamon_3" class="precio">--.--</div>
-      <div id="p_jamon_4" class="precio">--.--</div>
-      <div id="p_jamon_5" class="precio">--.--</div>
-      <div id="p_jamon_6" class="precio">--.--</div>
-      <div id="p_jamon_7" class="precio">--.--</div>
-      <div id="p_jamon_8" class="precio">--.--</div>
-      <div id="p_jamon_9" class="precio">--.--</div>
+      <!-- Jamones (Descripción y Precio) -->
+      <div id="d_jamon_1" class="descripcion">---</div> <div id="p_jamon_1" class="precio">Ref. --.--</div>
+      <div id="d_jamon_2" class="descripcion">---</div> <div id="p_jamon_2" class="precio">Ref. --.--</div>
+      <div id="d_jamon_3" class="descripcion">---</div> <div id="p_jamon_3" class="precio">Ref. --.--</div>
+      <div id="d_jamon_4" class="descripcion">---</div> <div id="p_jamon_4" class="precio">Ref. --.--</div>
+      <div id="d_jamon_5" class="descripcion">---</div> <div id="p_jamon_5" class="precio">Ref. --.--</div>
+      <div id="d_jamon_6" class="descripcion">---</div> <div id="p_jamon_6" class="precio">Ref. --.--</div>
+      <div id="d_jamon_7" class="descripcion">---</div> <div id="p_jamon_7" class="precio">Ref. --.--</div>
+      <div id="d_jamon_8" class="descripcion">---</div> <div id="p_jamon_8" class="precio">Ref. --.--</div>
+      <div id="d_jamon_9" class="descripcion">---</div> <div id="p_jamon_9" class="precio">Ref. --.--</div>
 
-      <!-- Pechugas -->
-      <div id="p_pechuga_1" class="precio">--.--</div>
-      <div id="p_pechuga_2" class="precio">--.--</div>
-      <div id="p_pechuga_3" class="precio">--.--</div>
-      <div id="p_pechuga_4" class="precio">--.--</div>
-      <div id="p_pechuga_5" class="precio">--.--</div>
+      <!-- Pechugas (Descripción y Precio) -->
+      <div id="d_pechuga_1" class="descripcion">---</div> <div id="p_pechuga_1" class="precio">Ref. --.--</div>
+      <div id="d_pechuga_2" class="descripcion">---</div> <div id="p_pechuga_2" class="precio">Ref. --.--</div>
+      <div id="d_pechuga_3" class="descripcion">---</div> <div id="p_pechuga_3" class="precio">Ref. --.--</div>
+      <div id="d_pechuga_4" class="descripcion">---</div> <div id="p_pechuga_4" class="precio">Ref. --.--</div>
+      <div id="d_pechuga_5" class="descripcion">---</div> <div id="p_pechuga_5" class="precio">Ref. --.--</div>
 
-      <!-- Mortadelas -->
-      <div id="p_mortadela_1" class="precio">--.--</div>
-      <div id="p_mortadela_2" class="precio">--.--</div>
-      <div id="p_mortadela_3" class="precio">--.--</div>
-      <div id="p_mortadela_4" class="precio">--.--</div>
-      <div id="p_mortadela_5" class="precio">--.--</div>
+      <!-- Mortadelas (Descripción y Precio) -->
+      <div id="d_mortadela_1" class="descripcion">---</div> <div id="p_mortadela_1" class="precio">Ref. --.--</div>
+      <div id="d_mortadela_2" class="descripcion">---</div> <div id="p_mortadela_2" class="precio">Ref. --.--</div>
+      <div id="d_mortadela_3" class="descripcion">---</div> <div id="p_mortadela_3" class="precio">Ref. --.--</div>
+      <div id="d_mortadela_4" class="descripcion">---</div> <div id="p_mortadela_4" class="precio">Ref. --.--</div>
+      <div id="d_mortadela_5" class="descripcion">---</div> <div id="p_mortadela_5" class="precio">Ref. --.--</div>
 
-     <!-- Marquesina Tasa BCV y EURO (Opción 2) -->
-<div class="marquesina-contenedor">
-  <div class="marquesina-contenido">
-    <div class="marquesina-bloque">
-      💳 TASA OFICIAL DEL DÍA BCV &nbsp;•&nbsp; 💵 DOLAR: <span id="tasa-usd">Bs. --.--</span> &nbsp;•&nbsp; 💶 EURO: <span id="tasa-eur">Bs. --.--</span> &nbsp;•&nbsp; 🥖 ¡LOS MEJORES PRECIOS Y LA MEJOR ATENCIÓN EN PANADERÍA SHANGHAI! &nbsp;•&nbsp;&nbsp;&nbsp;
-    </div>
-    <div class="marquesina-bloque">
-      💳 TASA OFICIAL DEL DÍA BCV &nbsp;•&nbsp; 💵 DOLAR: <span id="tasa-usd-dup">Bs. --.--</span> &nbsp;•&nbsp; 💶 EURO: <span id="tasa-eur-dup">Bs. --.--</span> &nbsp;•&nbsp; 🥖 ¡LOS MEJORES PRECIOS Y LA MEJOR ATENCIÓN EN PANADERÍA SHANGHAI! &nbsp;•&nbsp;&nbsp;&nbsp;
+      <!-- Marquesina Tasa BCV y EURO -->
+      <div class="marquesina-contenedor">
+        <div class="marquesina-contenido">
+          <div class="marquesina-bloque">
+            💳 TASA OFICIAL DEL DÍA BCV &nbsp;•&nbsp; 💵 DOLAR: <span id="tasa-usd">Bs. --.--</span> &nbsp;•&nbsp; 💶 EURO: <span id="tasa-eur">Bs. --.--</span> &nbsp;•&nbsp; 🥖 ¡LOS MEJORES PRECIOS Y LA MEJOR ATENCIÓN EN PANADERÍA SHANGHAI! &nbsp;•&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="marquesina-bloque">
+            💳 TASA OFICIAL DEL DÍA BCV &nbsp;•&nbsp; 💵 DOLAR: <span id="tasa-usd-dup">Bs. --.--</span> &nbsp;•&nbsp; 💶 EURO: <span id="tasa-eur-dup">Bs. --.--</span> &nbsp;•&nbsp; 🥖 ¡LOS MEJORES PRECIOS Y LA MEJOR ATENCIÓN EN PANADERÍA SHANGHAI! &nbsp;•&nbsp;&nbsp;&nbsp;
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -184,68 +230,81 @@
 
     const SHEET_ID = '1XOAgS8WZn6_WXgBoSv_CmLU0N7NJ2Z-2su2zmxEVJLE';
 
-   // Función callback global para procesar Precios (Hoja2)
-window.procesarPrecios = function(data) {
-  if (!data || !data.table || !data.table.rows) return;
-  const rows = data.table.rows;
+    // Función callback global para procesar Precios y Descripciones (Hoja2)
+    window.procesarPrecios = function(data) {
+      if (!data || !data.table || !data.table.rows) return;
+      const rows = data.table.rows;
 
-  // Jamones: Filas 3 a 11 en Excel (índices 1 a 9 en rows)
-  for (let i = 0; i < 9; i++) {
-    let v = rows[i + 0]?.c[3]?.v;
-    if (v !== undefined && v !== null) {
-      document.getElementById(`p_jamon_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-    }
-  }
+      // JAMONES: Filas 3 a 11 en Excel (índices 1 a 9 en rows)
+      for (let i = 0; i < 9; i++) {
+        let desc = rows[i + 1]?.c[1]?.v; // Columna B (Descripción)
+        let precio = rows[i + 1]?.c[3]?.v; // Columna D (Precio)
 
-  // Pechugas: Filas 13 a 17 en Excel (índices 11 a 15 en rows)
-  for (let i = 0; i < 5; i++) {
-    let v = rows[i + 9]?.c[3]?.v;
-    if (v !== undefined && v !== null) {
-      document.getElementById(`p_pechuga_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-    }
-  }
+        if (desc !== undefined && desc !== null) {
+          document.getElementById(`d_jamon_${i+1}`).innerText = desc;
+        }
+        if (precio !== undefined && precio !== null) {
+          let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
+          document.getElementById(`p_jamon_${i+1}`).innerText = `Ref. ${val}`;
+        }
+      }
 
-  // Mortadelas: Filas 24 a 28 en Excel (índices 22 a 26 en rows)
-  for (let i = 0; i < 5; i++) {
-    let v = rows[i + 18]?.c[3]?.v;
-    if (v !== undefined && v !== null) {
-      document.getElementById(`p_mortadela_${i+1}`).innerText = typeof v === 'number' ? v.toFixed(2) : v;
-    }
-  }
-};
+      // PECHUGAS: Filas 13 a 17 en Excel (índices 11 a 15 en rows)
+      for (let i = 0; i < 5; i++) {
+        let desc = rows[i + 11]?.c[1]?.v;
+        let precio = rows[i + 11]?.c[3]?.v;
+
+        if (desc !== undefined && desc !== null) {
+          document.getElementById(`d_pechuga_${i+1}`).innerText = desc;
+        }
+        if (precio !== undefined && precio !== null) {
+          let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
+          document.getElementById(`p_pechuga_${i+1}`).innerText = `Ref. ${val}`;
+        }
+      }
+
+      // MORTADELAS: Filas 24 a 28 en Excel (índices 22 a 26 en rows)
+      for (let i = 0; i < 5; i++) {
+        let desc = rows[i + 22]?.c[1]?.v;
+        let precio = rows[i + 22]?.c[3]?.v;
+
+        if (desc !== undefined && desc !== null) {
+          document.getElementById(`d_mortadela_${i+1}`).innerText = desc;
+        }
+        if (precio !== undefined && precio !== null) {
+          let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
+          document.getElementById(`p_mortadela_${i+1}`).innerText = `Ref. ${val}`;
+        }
+      }
+    };
     
-  // Función callback global para procesar Tasas (Hoja3)
-window.procesarTasas = function(data) {
-  if (!data || !data.table || !data.table.rows) return;
-  const rows = data.table.rows;
+    // Función callback global para procesar Tasas (Hoja3)
+    window.procesarTasas = function(data) {
+      if (!data || !data.table || !data.table.rows) return;
+      const rows = data.table.rows;
 
-  // Fila 2 de Excel = rows[0] (784.66)
-  // Fila 5 de Excel = rows[3] (916.00)
-  let usdVal = rows[0]?.c[1]?.v;
-  let eurVal = rows[3]?.c[1]?.v;
+      let usdVal = rows[0]?.c[1]?.v;
+      let eurVal = rows[3]?.c[1]?.v;
 
-  let txtUsd = usdVal !== undefined && usdVal !== null ? `Bs. ${typeof usdVal === 'number' ? usdVal.toFixed(2) : usdVal}` : 'Bs. --.--';
-  let txtEur = eurVal !== undefined && eurVal !== null ? `Bs. ${typeof eurVal === 'number' ? eurVal.toFixed(2) : eurVal}` : 'Bs. --.--';
+      let txtUsd = usdVal !== undefined && usdVal !== null ? `Bs. ${typeof usdVal === 'number' ? usdVal.toFixed(2) : usdVal}` : 'Bs. --.--';
+      let txtEur = eurVal !== undefined && eurVal !== null ? `Bs. ${typeof eurVal === 'number' ? eurVal.toFixed(2) : eurVal}` : 'Bs. --.--';
 
-  if (document.getElementById('tasa-usd')) document.getElementById('tasa-usd').innerText = txtUsd;
-  if (document.getElementById('tasa-eur')) document.getElementById('tasa-eur').innerText = txtEur;
-  if (document.getElementById('tasa-usd-dup')) document.getElementById('tasa-usd-dup').innerText = txtUsd;
-  if (document.getElementById('tasa-eur-dup')) document.getElementById('tasa-eur-dup').innerText = txtEur;
-};
+      if (document.getElementById('tasa-usd')) document.getElementById('tasa-usd').innerText = txtUsd;
+      if (document.getElementById('tasa-eur')) document.getElementById('tasa-eur').innerText = txtEur;
+      if (document.getElementById('tasa-usd-dup')) document.getElementById('tasa-usd-dup').innerText = txtUsd;
+      if (document.getElementById('tasa-eur-dup')) document.getElementById('tasa-eur-dup').innerText = txtEur;
+    };
     
     function pedirDatos() {
-      // Script dinámico para Precios (Hoja2)
       const scriptPrecios = document.createElement('script');
       scriptPrecios.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja2&tqx=responseHandler:procesarPrecios`;
       document.body.appendChild(scriptPrecios);
 
-      // Script dinámico para Tasas (Hoja3)
       const scriptTasas = document.createElement('script');
       scriptTasas.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Hoja3&tqx=responseHandler:procesarTasas`;
       document.body.appendChild(scriptTasas);
     }
 
-    // Ejecutar al cargar y cada 30 segundos
     pedirDatos();
     setInterval(pedirDatos, 30000);
   </script>
