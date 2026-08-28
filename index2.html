@@ -6,7 +6,8 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+  <!-- Cargamos Lato para descripciones y Bree Serif para los títulos -->
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:wght@900&display=swap" rel="stylesheet">
 
   <style>
     * { 
@@ -51,6 +52,24 @@
       pointer-events: none; 
     }
 
+    /* ESTILO DE LOS TÍTULOS DE CATEGORÍA CON BREE SERIF */
+    .titulo-categoria {
+      position: absolute;
+      font-family: 'Bree Serif', serif;
+      font-size: 2.1vw;
+      font-weight: 400; /* Bree Serif ya viene por defecto con buen peso */
+      color: #006311;   /* Verde oscuro */
+      text-transform: uppercase;
+      text-align: center;
+      width: 25vw;
+    }
+
+    /* POSICIONES DE LOS TÍTULOS */
+    #t_chorizos   { top: 10.0%; left: 5.0%; }
+    #t_quesos     { top: 10.0%; left: 38.0%; }
+    #t_salchichas { top: 44.5%; left: 5.0%; }
+    #t_salsas     { top: 44.5%; left: 38.0%; }
+
     /* ESTILO DE DESCRIPCIONES (NOMBRES) */
     .descripcion {
       position: absolute;
@@ -77,7 +96,7 @@
 
     /* SEPARACIÓN ENTRE 'Ref.' Y EL PRECIO */
     .prefijo-ref {
-      margin-right: 12px; /* Cambia este valor para más o menos espacio */
+      margin-right: 12px;
       display: inline-block;
     }
 
@@ -151,6 +170,12 @@
     </video>
 
     <div class="menu-overlay">
+      <!-- ENUNCIADOS / TÍTULOS DE SECCIONES -->
+      <div id="t_chorizos" class="titulo-categoria">CHORIZOS</div>
+      <div id="t_quesos" class="titulo-categoria">QUESOS</div>
+      <div id="t_salchichas" class="titulo-categoria">SALCHICHAS</div>
+      <div id="t_salsas" class="titulo-categoria">SALSAS Y DIPS</div>
+
       <!-- Chorizos -->
       <div id="d_chorizo_1" class="descripcion">---</div> <div id="p_chorizo_1" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
       <div id="d_chorizo_2" class="descripcion">---</div> <div id="p_chorizo_2" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
