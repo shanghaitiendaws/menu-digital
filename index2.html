@@ -64,7 +64,7 @@
       text-overflow: ellipsis;
     }
 
-    /* ESTILO DE PRECIOS CON REF */
+    /* ESTILO DE PRECIOS */
     .precio { 
       position: absolute; 
       font-family: 'Lato', sans-serif;
@@ -73,6 +73,12 @@
       color: #ac1a12; 
       text-align: left; 
       width: 8vw; 
+    }
+
+    /* SEPARACIÓN ENTRE 'Ref.' Y EL PRECIO */
+    .prefijo-ref {
+      margin-right: 12px; /* Cambia este valor para más o menos espacio */
+      display: inline-block;
     }
 
     /* POSICIONES CHORIZOS */
@@ -145,28 +151,32 @@
     </video>
 
     <div class="menu-overlay">
-      <div id="d_chorizo_1" class="descripcion">---</div> <div id="p_chorizo_1" class="precio">Ref. --.--</div>
-      <div id="d_chorizo_2" class="descripcion">---</div> <div id="p_chorizo_2" class="precio">Ref. --.--</div>
-      <div id="d_chorizo_3" class="descripcion">---</div> <div id="p_chorizo_3" class="precio">Ref. --.--</div>
-      <div id="d_chorizo_4" class="descripcion">---</div> <div id="p_chorizo_4" class="precio">Ref. --.--</div>
-      <div id="d_chorizo_5" class="descripcion">---</div> <div id="p_chorizo_5" class="precio">Ref. --.--</div>
-      <div id="d_chorizo_6" class="descripcion">---</div> <div id="p_chorizo_6" class="precio">Ref. --.--</div>
+      <!-- Chorizos -->
+      <div id="d_chorizo_1" class="descripcion">---</div> <div id="p_chorizo_1" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_chorizo_2" class="descripcion">---</div> <div id="p_chorizo_2" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_chorizo_3" class="descripcion">---</div> <div id="p_chorizo_3" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_chorizo_4" class="descripcion">---</div> <div id="p_chorizo_4" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_chorizo_5" class="descripcion">---</div> <div id="p_chorizo_5" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_chorizo_6" class="descripcion">---</div> <div id="p_chorizo_6" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
 
-      <div id="d_salchicha_1" class="descripcion">---</div> <div id="p_salchicha_1" class="precio">Ref. --.--</div>
-      <div id="d_salchicha_2" class="descripcion">---</div> <div id="p_salchicha_2" class="precio">Ref. --.--</div>
-      <div id="d_salchicha_3" class="descripcion">---</div> <div id="p_salchicha_3" class="precio">Ref. --.--</div>
-      <div id="d_salchicha_4" class="descripcion">---</div> <div id="p_salchicha_4" class="precio">Ref. --.--</div>
+      <!-- Salchichas -->
+      <div id="d_salchicha_1" class="descripcion">---</div> <div id="p_salchicha_1" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_salchicha_2" class="descripcion">---</div> <div id="p_salchicha_2" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_salchicha_3" class="descripcion">---</div> <div id="p_salchicha_3" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_salchicha_4" class="descripcion">---</div> <div id="p_salchicha_4" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
 
-      <div id="d_queso_1" class="descripcion">---</div> <div id="p_queso_1" class="precio">Ref. --.--</div>
-      <div id="d_queso_2" class="descripcion">---</div> <div id="p_queso_2" class="precio">Ref. --.--</div>
-      <div id="d_queso_3" class="descripcion">---</div> <div id="p_queso_3" class="precio">Ref. --.--</div>
-      <div id="d_queso_4" class="descripcion">---</div> <div id="p_queso_4" class="precio">Ref. --.--</div>
-      <div id="d_queso_5" class="descripcion">---</div> <div id="p_queso_5" class="precio">Ref. --.--</div>
-      <div id="d_queso_6" class="descripcion">---</div> <div id="p_queso_6" class="precio">Ref. --.--</div>
+      <!-- Quesos -->
+      <div id="d_queso_1" class="descripcion">---</div> <div id="p_queso_1" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_queso_2" class="descripcion">---</div> <div id="p_queso_2" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_queso_3" class="descripcion">---</div> <div id="p_queso_3" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_queso_4" class="descripcion">---</div> <div id="p_queso_4" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_queso_5" class="descripcion">---</div> <div id="p_queso_5" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_queso_6" class="descripcion">---</div> <div id="p_queso_6" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
 
-      <div id="d_salsa_1" class="descripcion">---</div> <div id="p_salsa_1" class="precio">Ref. --.--</div>
-      <div id="d_salsa_2" class="descripcion">---</div> <div id="p_salsa_2" class="precio">Ref. --.--</div>
-      <div id="d_salsa_3" class="descripcion">---</div> <div id="p_salsa_3" class="precio">Ref. --.--</div>
+      <!-- Salsas -->
+      <div id="d_salsa_1" class="descripcion">---</div> <div id="p_salsa_1" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_salsa_2" class="descripcion">---</div> <div id="p_salsa_2" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_salsa_3" class="descripcion">---</div> <div id="p_salsa_3" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
     </div>
   </div>
 
@@ -195,7 +205,7 @@
         }
         if (precio !== undefined && precio !== null) {
           let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
-          document.getElementById(`p_chorizo_${i+1}`).innerText = `Ref. ${val}`;
+          document.getElementById(`p_chorizo_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span>${val}`;
         }
       }
 
@@ -209,7 +219,7 @@
         }
         if (precio !== undefined && precio !== null) {
           let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
-          document.getElementById(`p_salchicha_${i+1}`).innerText = `Ref. ${val}`;
+          document.getElementById(`p_salchicha_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span>${val}`;
         }
       }
 
@@ -223,7 +233,7 @@
         }
         if (precio !== undefined && precio !== null) {
           let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
-          document.getElementById(`p_queso_${i+1}`).innerText = `Ref. ${val}`;
+          document.getElementById(`p_queso_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span>${val}`;
         }
       }
 
@@ -237,7 +247,7 @@
         }
         if (precio !== undefined && precio !== null) {
           let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
-          document.getElementById(`p_salsa_${i+1}`).innerText = `Ref. ${val}`;
+          document.getElementById(`p_salsa_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span>${val}`;
         }
       }
     };
