@@ -6,7 +6,8 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+  <!-- Importamos Bree Serif para títulos y Lato para productos -->
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:wght@900&display=swap" rel="stylesheet">
 
   <style>
     * { 
@@ -51,6 +52,23 @@
       pointer-events: none; 
     }
 
+    /* ESTILO DE LOS TÍTULOS DE CATEGORÍA */
+    .titulo-categoria {
+      position: absolute;
+      font-family: 'Bree Serif', serif;
+      font-size: 2.1vw;
+      font-weight: 600;
+      color: #006311; /* Verde seleccionado */
+      text-transform: uppercase;
+      text-align: center;
+      width: 26vw;
+    }
+
+    /* POSICIONES DE LOS TÍTULOS */
+    #t_jamones    { top: 10.5%; left: 31.0%; }
+    #t_pechugas   { top: 10.5%; left: 65.0%; }
+    #t_mortadelas { top: 42.5%; left: 65.0%; }
+
     /* ESTILO DE DESCRIPCIONES (NOMBRES) */
     .descripcion {
       position: absolute;
@@ -77,11 +95,11 @@
 
     /* ESTILO REF AUMENTA LA SEPARACION */
     .prefijo-ref {
-  margin-right: 12px; /* Aumenta este número para dar más separación entre "Ref." y el precio */
-  display: inline-block;
-}
+      margin-right: 12px;
+      display: inline-block;
+    }
 
-    /* POSICIONES JAMONES (Nombre a la izquierda, Precio a la derecha) */
+    /* POSICIONES JAMONES */
     #d_jamon_1 { top: 17.2%; left: 31.0%; width: 23vw; }
     #p_jamon_1 { top: 17.2%; left: 50.6%; }
 
@@ -146,8 +164,8 @@
       position: absolute;
       bottom: 5px;
       left: 0px;
-      width: 26.3vw;     
-      height: 3.5vh;     
+      width: 26.3vw;      
+      height: 3.5vh;      
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -187,30 +205,35 @@
     </video>
 
     <div class="menu-overlay">
+      <!-- ENUNCIADOS / TÍTULOS DE SECCIONES -->
+      <div id="t_jamones" class="titulo-categoria">JAMONES</div>
+      <div id="t_pechugas" class="titulo-categoria">PECHUGAS</div>
+      <div id="t_mortadelas" class="titulo-categoria">MORTADELAS</div>
+
       <!-- Jamones (Descripción y Precio) -->
-      <div id="d_jamon_1" class="descripcion">---</div> <div id="p_jamon_1" class="precio">Ref. --.--</div>
-      <div id="d_jamon_2" class="descripcion">---</div> <div id="p_jamon_2" class="precio">Ref. --.--</div>
-      <div id="d_jamon_3" class="descripcion">---</div> <div id="p_jamon_3" class="precio">Ref. --.--</div>
-      <div id="d_jamon_4" class="descripcion">---</div> <div id="p_jamon_4" class="precio">Ref. --.--</div>
-      <div id="d_jamon_5" class="descripcion">---</div> <div id="p_jamon_5" class="precio">Ref. --.--</div>
-      <div id="d_jamon_6" class="descripcion">---</div> <div id="p_jamon_6" class="precio">Ref. --.--</div>
-      <div id="d_jamon_7" class="descripcion">---</div> <div id="p_jamon_7" class="precio">Ref. --.--</div>
-      <div id="d_jamon_8" class="descripcion">---</div> <div id="p_jamon_8" class="precio">Ref. --.--</div>
-      <div id="d_jamon_9" class="descripcion">---</div> <div id="p_jamon_9" class="precio">Ref. --.--</div>
+      <div id="d_jamon_1" class="descripcion">---</div> <div id="p_jamon_1" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_jamon_2" class="descripcion">---</div> <div id="p_jamon_2" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_jamon_3" class="descripcion">---</div> <div id="p_jamon_3" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_jamon_4" class="descripcion">---</div> <div id="p_jamon_4" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_jamon_5" class="descripcion">---</div> <div id="p_jamon_5" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_jamon_6" class="descripcion">---</div> <div id="p_jamon_6" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_jamon_7" class="descripcion">---</div> <div id="p_jamon_7" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_jamon_8" class="descripcion">---</div> <div id="p_jamon_8" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_jamon_9" class="descripcion">---</div> <div id="p_jamon_9" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
 
       <!-- Pechugas (Descripción y Precio) -->
-      <div id="d_pechuga_1" class="descripcion">---</div> <div id="p_pechuga_1" class="precio">Ref. --.--</div>
-      <div id="d_pechuga_2" class="descripcion">---</div> <div id="p_pechuga_2" class="precio">Ref. --.--</div>
-      <div id="d_pechuga_3" class="descripcion">---</div> <div id="p_pechuga_3" class="precio">Ref. --.--</div>
-      <div id="d_pechuga_4" class="descripcion">---</div> <div id="p_pechuga_4" class="precio">Ref. --.--</div>
-      <div id="d_pechuga_5" class="descripcion">---</div> <div id="p_pechuga_5" class="precio">Ref. --.--</div>
+      <div id="d_pechuga_1" class="descripcion">---</div> <div id="p_pechuga_1" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_pechuga_2" class="descripcion">---</div> <div id="p_pechuga_2" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_pechuga_3" class="descripcion">---</div> <div id="p_pechuga_3" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_pechuga_4" class="descripcion">---</div> <div id="p_pechuga_4" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_pechuga_5" class="descripcion">---</div> <div id="p_pechuga_5" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
 
       <!-- Mortadelas (Descripción y Precio) -->
-      <div id="d_mortadela_1" class="descripcion">---</div> <div id="p_mortadela_1" class="precio">Ref. --.--</div>
-      <div id="d_mortadela_2" class="descripcion">---</div> <div id="p_mortadela_2" class="precio">Ref. --.--</div>
-      <div id="d_mortadela_3" class="descripcion">---</div> <div id="p_mortadela_3" class="precio">Ref. --.--</div>
-      <div id="d_mortadela_4" class="descripcion">---</div> <div id="p_mortadela_4" class="precio">Ref. --.--</div>
-      <div id="d_mortadela_5" class="descripcion">---</div> <div id="p_mortadela_5" class="precio">Ref. --.--</div>
+      <div id="d_mortadela_1" class="descripcion">---</div> <div id="p_mortadela_1" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_mortadela_2" class="descripcion">---</div> <div id="p_mortadela_2" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_mortadela_3" class="descripcion">---</div> <div id="p_mortadela_3" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_mortadela_4" class="descripcion">---</div> <div id="p_mortadela_4" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
+      <div id="d_mortadela_5" class="descripcion">---</div> <div id="p_mortadela_5" class="precio"><span class="prefijo-ref">Ref.</span>--.--</div>
 
       <!-- Marquesina Tasa BCV y EURO -->
       <div class="marquesina-contenedor">
@@ -241,21 +264,21 @@
       if (!data || !data.table || !data.table.rows) return;
       const rows = data.table.rows;
 
-      // JAMONES: Filas 3 a 11 en Excel (índices 1 a 9 en rows)
+      // JAMONES: Filas en Google Sheets
       for (let i = 0; i < 9; i++) {
-        let desc = rows[i + 0]?.c[1]?.v; // Columna B (Descripción)
-        let precio = rows[i + 0]?.c[3]?.v; // Columna D (Precio)
+        let desc = rows[i + 0]?.c[1]?.v; 
+        let precio = rows[i + 0]?.c[3]?.v; 
 
         if (desc !== undefined && desc !== null) {
           document.getElementById(`d_jamon_${i+1}`).innerText = desc;
         }
         if (precio !== undefined && precio !== null) {
           let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
-          document.getElementById(`p_jamon_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span> ${val}`;
+          document.getElementById(`p_jamon_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span>${val}`;
         }
       }
 
-      // PECHUGAS: Filas 13 a 17 en Excel (índices 11 a 15 en rows)
+      // PECHUGAS: Filas en Google Sheets
       for (let i = 0; i < 5; i++) {
         let desc = rows[i + 9]?.c[1]?.v;
         let precio = rows[i + 9]?.c[3]?.v;
@@ -265,11 +288,11 @@
         }
         if (precio !== undefined && precio !== null) {
           let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
-          document.getElementById(`p_pechuga_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span> ${val}`;
+          document.getElementById(`p_pechuga_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span>${val}`;
         }
       }
 
-      // MORTADELAS: Filas 24 a 28 en Excel (índices 22 a 26 en rows)
+      // MORTADELAS: Filas en Google Sheets
       for (let i = 0; i < 5; i++) {
         let desc = rows[i + 18]?.c[1]?.v;
         let precio = rows[i + 18]?.c[3]?.v;
@@ -279,7 +302,7 @@
         }
         if (precio !== undefined && precio !== null) {
           let val = typeof precio === 'number' ? precio.toFixed(2) : precio;
-          document.getElementById(`p_mortadela_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span> ${val}`;
+          document.getElementById(`p_mortadela_${i+1}`).innerHTML = `<span class="prefijo-ref">Ref.</span>${val}`;
         }
       }
     };
