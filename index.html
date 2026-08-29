@@ -280,8 +280,8 @@
 
       // PECHUGAS: Filas en Google Sheets
       for (let i = 0; i < 5; i++) {
-        let desc = rows[i + 9]?.c[1]?.v;
-        let precio = rows[i + 9]?.c[3]?.v;
+        let desc = rows[i + 10]?.c[1]?.v;
+        let precio = rows[i + 10]?.c[3]?.v;
 
         if (desc !== undefined && desc !== null) {
           document.getElementById(`d_pechuga_${i+1}`).innerText = desc;
@@ -294,8 +294,8 @@
 
       // MORTADELAS: Filas en Google Sheets
       for (let i = 0; i < 5; i++) {
-        let desc = rows[i + 18]?.c[1]?.v;
-        let precio = rows[i + 18]?.c[3]?.v;
+        let desc = rows[i + 21]?.c[1]?.v;
+        let precio = rows[i + 21]?.c[3]?.v;
 
         if (desc !== undefined && desc !== null) {
           document.getElementById(`d_mortadela_${i+1}`).innerText = desc;
